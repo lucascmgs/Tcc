@@ -57,6 +57,9 @@ public class ItemSync : MonoBehaviourPunCallbacks, IPunObservable
 
         newPos.z = 0;
         this.transform.position = newPos;
-        this.GetComponent<Rigidbody2D>().velocity = givenVelocity;
+        var rb = this.GetComponent<Rigidbody2D>();
+        rb.velocity = givenVelocity;
+        this.transform.right = -givenVelocity;
+
     }
 }

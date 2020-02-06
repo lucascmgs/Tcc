@@ -11,6 +11,7 @@ public class SubMovement : MonoBehaviour
 
     [SerializeField]
     private float horizontalSpeed = 5f;
+    [SerializeField]
     private float verticalSpeed = 3f;
     
     void Start()
@@ -27,7 +28,6 @@ public class SubMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         var movement = context.ReadValue<Vector2>();
-        Debug.Log(movement);
         movement.x *= horizontalSpeed;
         movement.y *= verticalSpeed;
 

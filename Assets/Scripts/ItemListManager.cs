@@ -25,6 +25,7 @@ public class ItemListManager : MonoBehaviour
 
     private GameObject CurrentItem;
 
+    public GameObject HoldItem;
     
     private Vector3 mousePositionInWorld = Vector3.zero;
     private Vector3 previousMousePositionInWorld = Vector3.zero;
