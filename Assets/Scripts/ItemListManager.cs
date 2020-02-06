@@ -8,8 +8,11 @@ using UnityEngine.InputSystem;
 
 public class ItemListManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private GameObject directionArrow;
+    private SpriteRenderer arrowRenderer;
+    
     [SerializeField] private float cooldown = 1.0f;
+    [SerializeField] private float minimumAdequateDistance = 10.0f;
 
     private float currentCooldown = 0;
 
@@ -25,10 +28,11 @@ public class ItemListManager : MonoBehaviour
 
     private GameObject CurrentItem;
 
-    public GameObject HoldItem;
     
     private Vector3 mousePositionInWorld = Vector3.zero;
-    private Vector3 previousMousePositionInWorld = Vector3.zero;
+    private Vector2 lastAdequateMousePosition = Vector2.zero;
+    
+    
     private Pointer currentMouse;
 
     void Start()
@@ -39,6 +43,9 @@ public class ItemListManager : MonoBehaviour
         {
             ItemListChanged = new UnityEvent();
         }
+
+        arrowRenderer = directionArrow.GetComponent<SpriteRenderer>();
+        arrowRenderer.enabled = false;
         InitializeItemList();
     }
 
@@ -68,11 +75,6 @@ public class ItemListManager : MonoBehaviour
     public void ManagePointerPosition(InputAction.CallbackContext context)
     {
         var positionValue = context.ReadValue<Vector2>();
-        
-        if (mousePositionInWorld != previousMousePositionInWorld)
-        {
-            previousMousePositionInWorld = mousePositionInWorld;    
-        }
 
         Debug.Log(positionValue);
         
@@ -81,19 +83,37 @@ public class ItemListManager : MonoBehaviour
 
         if (CurrentItem != null)
         {
-            CurrentItem.transform.position = mousePositionInWorld;
+            var distanceFromObject = MouseDistanceFromCurrentItem();
+            if (distanceFromObject.magnitude > minimumAdequateDistance)
+            {
+                distanceFromObject.Normalize();
+                var itemPos = CurrentItem.transform.position;
+                arrowRenderer.enabled = true;
+                directionArrow.transform.position = itemPos - new Vector3(distanceFromObject.x, distanceFromObject.y, 0) * 2;
+                directionArrow.transform.right = distanceFromObject;
+                CurrentItem.transform.right = distanceFromObject;
+            }
+            else
+            {
+                arrowRenderer.enabled = false;
+            }
         }
+        else
+        {
+            arrowRenderer.enabled = false;
+        }
+        
     }
+    
     public void ManageCurrentItem(InputAction.CallbackContext context)
     {
         
-        
-        var finishedClick = context.performed;
+        var finishedClick = !context.performed;
         var name = context.action.name;
         
         Debug.Log("Name: " + name + " Finished: " + finishedClick);
         
-        if (finishedClick && currentCooldown == 0f && CurrentItem == null)
+        if (!finishedClick && currentCooldown == 0f && CurrentItem == null)
         {
             currentCooldown = cooldown;
             var newItem = UseItem();
@@ -103,24 +123,26 @@ public class ItemListManager : MonoBehaviour
         } 
         if ( CurrentItem != null)
         {
-            var newVelocity = new Vector2(mousePositionInWorld.x - previousMousePositionInWorld.x, mousePositionInWorld.y - previousMousePositionInWorld.y);
-            if (newVelocity == Vector2.zero)
+            if (finishedClick)
             {
-                newVelocity = Vector2.left;
-            }
-            else
-            {
-                CurrentItem.transform.right = - newVelocity;    
-            }
-
-            if (!finishedClick)
-            {
+                Vector2 newVelocity = - MouseDistanceFromCurrentItem();
+                if (newVelocity == Vector2.zero)
+                {
+                    newVelocity = Vector2.left;
+                }
+                else
+                {
+                    CurrentItem.transform.right = - newVelocity;    
+                }
+                
+                
                 var rb = CurrentItem.GetComponent<Rigidbody2D>();
 
                 newVelocity.Normalize();
                 newVelocity = newVelocity * itemDropSpeed;
                 rb.velocity = newVelocity;
                 CurrentItem.transform.right = - newVelocity;
+                arrowRenderer.enabled = false;
                 CurrentItem = null;
             }
             
@@ -128,6 +150,16 @@ public class ItemListManager : MonoBehaviour
         
     }
 
+    private Vector2 MouseDistanceFromCurrentItem()
+    {
+        if (CurrentItem != null)
+        {
+            return mousePositionInWorld - CurrentItem.transform.position;
+        }
+
+        return Vector2.positiveInfinity;
+    }
+    
     GameObject GenerateNewItem()
     {
         int randomIndex = (int) Random.Range(0, PossibleItems.Count);
