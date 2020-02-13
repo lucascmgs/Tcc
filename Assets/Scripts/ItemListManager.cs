@@ -12,7 +12,7 @@ public class ItemListManager : MonoBehaviour
     private SpriteRenderer arrowRenderer;
     
     [SerializeField] private float cooldown = 1.0f;
-    [SerializeField] private float minimumAdequateDistance = 10.0f;
+    [SerializeField] private float minimumAdequateDistance = 1.4f;
 
     private float currentCooldown = 0;
 
