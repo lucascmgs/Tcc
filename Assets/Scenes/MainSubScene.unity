@@ -405,6 +405,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseTreshold: 0.25
+  bulletSpeed: 3
+  maxBullets: 3
+  bulletPrefab: {fileID: 6660855192009155477, guid: 5f59b767b8874c482a65da8c88301ec4,
+    type: 3}
 --- !u!1 &731626529
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +708,18 @@ MonoBehaviour:
     m_ActionId: 476aed7a-2b3a-4cf7-9192-d8bc077e8bb7
     m_ActionName: Player/Move[/Gamepad/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 725582647}
+        m_MethodName: Fire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f6b87a9c-da3c-4c66-9240-bd781c33cf32
     m_ActionName: Player/Fire[/Gamepad/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:

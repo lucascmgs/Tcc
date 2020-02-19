@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class ItemSync : MonoBehaviourPunCallbacks, IPunObservable
+public class ObstacleBehaviour : MonoBehaviourPunCallbacks, IPunObservable
 {
     private float Height;
     private Vector2 Velocity;

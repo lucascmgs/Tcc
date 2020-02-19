@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class NextItemsList : MonoBehaviour
+public class UINextItemsList : MonoBehaviour
 {
     public GameObject ItemManager;
 
