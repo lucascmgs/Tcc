@@ -405,8 +405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseTreshold: 0.25
-  bulletSpeed: 3
-  maxBullets: 3
+  bulletSpeed: 5
+  maxBullets: 5
   bulletPrefab: {fileID: 6660855192009155477, guid: 5f59b767b8874c482a65da8c88301ec4,
     type: 3}
 --- !u!1 &731626529
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 1463700077}
   - component: {fileID: 1463700079}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -816,7 +816,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1893789026}
   m_Father: {fileID: 731626533}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -883,3 +884,55 @@ MonoBehaviour:
   - {fileID: 6991072294313716159, guid: 41eac8f04146c21abb7ed43b13b87137, type: 3}
   - {fileID: 4318818541513014507, guid: 41eac8f04146c21abb7ed43b13b87137, type: 3}
   - {fileID: -3714470408968705343, guid: 41eac8f04146c21abb7ed43b13b87137, type: 3}
+--- !u!1 &1893789025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1893789026}
+  - component: {fileID: 1893789027}
+  m_Layer: 5
+  m_Name: BulletsIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1893789026
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893789025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1463700076}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -60.17, y: -44.92}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1893789027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893789025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe8ed9e6895316108d3fd0677f3c388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gun: {fileID: 725582644}
+  distanceBetweenIndicators: 20
+  bulletIndicatorPrefab: {fileID: 6721511062806462656, guid: f5cbc377ee85ab53995bdd734a71d9f5,
+    type: 3}

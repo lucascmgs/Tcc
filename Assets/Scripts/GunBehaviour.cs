@@ -11,7 +11,7 @@ public class GunBehaviour : MonoBehaviour
     
     [SerializeField] private float bulletSpeed = 2;
 
-    [SerializeField] private int maxBullets = 3;
+    public int maxBullets = 3;
 
     [SerializeField] private GameObject bulletPrefab;
 
@@ -22,7 +22,7 @@ public class GunBehaviour : MonoBehaviour
     
     private Vector2 directionVector;
 
-    private int bulletCount = 0;
+    [NonSerialized] public int bulletCount = 0;
     
     
 
