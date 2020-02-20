@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,20 +7,36 @@ using UnityEngine.UI;
 
 public class UINextItemsList : MonoBehaviour
 {
-    public GameObject ItemManager;
+    [SerializeField] private ItemListManager itemManager;
 
+    [SerializeField] private Slider cooldownSlider;
+    
     private Queue<GameObject> itemList = new Queue<GameObject>();
-
+    
     private Image[] itemImages;
 
-    // Start is called before the first frame update
     void Start()
     {
-        itemList = ItemManager.GetComponent<ItemListManager>().itemList;
+        itemList = itemManager.itemList;
         itemImages = GetComponentsInChildren<Image>();
         UpdateItemImages();
     }
-    
+
+    private void Update()
+    {
+        var currentCooldown = itemManager.currentCooldown;
+        if (currentCooldown > 0)
+        {
+            cooldownSlider.gameObject.SetActive(true);
+            cooldownSlider.value = currentCooldown / itemManager.DefaultCooldown;
+        }
+        else
+        {
+            cooldownSlider.gameObject.SetActive(false);
+        }
+    }
+
+
     public void UpdateItemImages()
     {
         var imageArrayLength = itemImages.Length;

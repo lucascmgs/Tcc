@@ -1,40 +1,57 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 
 public class ItemListManager : MonoBehaviour
 {
-    [SerializeField] private GameObject directionArrow;
-    private SpriteRenderer arrowRenderer;
     
-    [SerializeField] private float cooldown = 1.0f;
-    [SerializeField] private float minimumAdequateDistance = 1.4f;
 
-    private float currentCooldown = 0;
-
-    [SerializeField] private float itemDropSpeed = 5.0f;
+    #region Public variables
     
-    public Queue<GameObject> itemList = new Queue<GameObject>();
+    public float DefaultCooldown = 1.0f;
+    
+    [NonSerialized] public float currentCooldown = 0; public Queue<GameObject> itemList = new Queue<GameObject>();
 
     public int itemListMaxSize = 2;
 
     public List<GameObject> PossibleItems;
-
+    
     public UnityEvent ItemListChanged;
+    
+    #endregion
 
-    private GameObject CurrentItem;
+    #region Private serialized variables
 
+    [SerializeField] private GameObject directionArrow;
+    
+    [SerializeField] private float minimumAdequateDistance = 1.4f;
+    
+    [SerializeField] private float itemDropSpeed = 5.0f;
+
+    #endregion
+    
+    #region Private non-serialized variables
+    private GameObject currentItem;
+
+    private GameObject holdItem;
     
     private Vector3 mousePositionInWorld = Vector3.zero;
+    
     private Vector2 lastAdequateMousePosition = Vector2.zero;
     
-    
     private Pointer currentMouse;
+    
+    private SpriteRenderer arrowRenderer;
 
+    private bool canChangeHoldItem = true;
+    #endregion
+    
     void Start()
     {
         currentMouse = Mouse.current;
@@ -81,17 +98,17 @@ public class ItemListManager : MonoBehaviour
         mousePositionInWorld = Camera.main.ScreenToWorldPoint(positionValue);
         mousePositionInWorld.z = 0;
 
-        if (CurrentItem != null)
+        if (currentItem != null)
         {
             var distanceFromObject = MouseDistanceFromCurrentItem();
             if (distanceFromObject.magnitude > minimumAdequateDistance)
             {
                 distanceFromObject.Normalize();
-                var itemPos = CurrentItem.transform.position;
+                var itemPos = currentItem.transform.position;
                 arrowRenderer.enabled = true;
                 directionArrow.transform.position = itemPos - new Vector3(distanceFromObject.x, distanceFromObject.y, 0) * 2;
                 directionArrow.transform.right = distanceFromObject;
-                CurrentItem.transform.right = distanceFromObject;
+                currentItem.transform.right = distanceFromObject;
             }
             else
             {
@@ -107,21 +124,18 @@ public class ItemListManager : MonoBehaviour
     
     public void ManageCurrentItem(InputAction.CallbackContext context)
     {
-        
+
         var finishedClick = !context.performed;
-        var name = context.action.name;
-        
-        Debug.Log("Name: " + name + " Finished: " + finishedClick);
-        
-        if (!finishedClick && currentCooldown == 0f && CurrentItem == null)
+
+        if (!finishedClick && currentCooldown == 0f && currentItem == null)
         {
-            currentCooldown = cooldown;
+            
             var newItem = UseItem();
 
-            CurrentItem = PhotonNetwork.Instantiate(newItem.name, mousePositionInWorld, Quaternion.identity);
+            currentItem = PhotonNetwork.Instantiate(newItem.name, mousePositionInWorld, Quaternion.identity);
             
         } 
-        if ( CurrentItem != null)
+        if ( currentItem != null && currentCooldown == 0f)
         {
             if (finishedClick)
             {
@@ -132,18 +146,20 @@ public class ItemListManager : MonoBehaviour
                 }
                 else
                 {
-                    CurrentItem.transform.right = - newVelocity;    
+                    currentItem.transform.right = - newVelocity;    
                 }
                 
                 
-                var rb = CurrentItem.GetComponent<Rigidbody2D>();
+                var rb = currentItem.GetComponent<Rigidbody2D>();
 
                 newVelocity.Normalize();
                 newVelocity = newVelocity * itemDropSpeed;
                 rb.velocity = newVelocity;
-                CurrentItem.transform.right = - newVelocity;
+                currentItem.transform.right = - newVelocity;
                 arrowRenderer.enabled = false;
-                CurrentItem = null;
+                canChangeHoldItem = true;
+                currentItem = null;
+                currentCooldown = DefaultCooldown;
             }
             
         }
@@ -152,9 +168,9 @@ public class ItemListManager : MonoBehaviour
 
     private Vector2 MouseDistanceFromCurrentItem()
     {
-        if (CurrentItem != null)
+        if (currentItem != null)
         {
-            return mousePositionInWorld - CurrentItem.transform.position;
+            return mousePositionInWorld - currentItem.transform.position;
         }
 
         return Vector2.positiveInfinity;
@@ -165,8 +181,7 @@ public class ItemListManager : MonoBehaviour
         int randomIndex = (int) Random.Range(0, PossibleItems.Count);
         return PossibleItems[randomIndex];
     }
-
-
+    
     private GameObject UseItem()
     {
         var item = itemList.Dequeue();
@@ -175,5 +190,10 @@ public class ItemListManager : MonoBehaviour
         ItemListChanged.Invoke();
 
         return item;
+    }
+
+    private void ChangeHoldItem()
+    {
+        canChangeHoldItem = false;
     }
 }
