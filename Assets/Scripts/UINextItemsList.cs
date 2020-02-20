@@ -11,7 +11,7 @@ public class UINextItemsList : MonoBehaviour
 
     [SerializeField] private Slider cooldownSlider;
     
-    private Queue<GameObject> itemList = new Queue<GameObject>();
+    private List<GameObject> itemList = new List<GameObject>();
     
     private Image[] itemImages;
 

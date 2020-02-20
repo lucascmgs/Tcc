@@ -16,7 +16,8 @@ public class ItemListManager : MonoBehaviour
     
     public float DefaultCooldown = 1.0f;
     
-    [NonSerialized] public float currentCooldown = 0; public Queue<GameObject> itemList = new Queue<GameObject>();
+    [NonSerialized] public float currentCooldown = 0; 
+    public List<GameObject> itemList = new List<GameObject>();
 
     public int itemListMaxSize = 2;
 
@@ -70,7 +71,7 @@ public class ItemListManager : MonoBehaviour
     {
         for (int i = 0; i < itemListMaxSize; i++)
         {
-            itemList.Enqueue(GenerateNewItem());
+            itemList.Insert(0, GenerateNewItem());
         }
         ItemListChanged.Invoke();
     }
@@ -127,7 +128,12 @@ public class ItemListManager : MonoBehaviour
 
         var finishedClick = !context.performed;
 
-        if (!finishedClick && currentCooldown == 0f && currentItem == null)
+        if (currentCooldown > 0f)
+        {
+            return;
+        }
+
+        if (!finishedClick  && currentItem == null)
         {
             
             var newItem = UseItem();
@@ -135,7 +141,7 @@ public class ItemListManager : MonoBehaviour
             currentItem = PhotonNetwork.Instantiate(newItem.name, mousePositionInWorld, Quaternion.identity);
             
         } 
-        if ( currentItem != null && currentCooldown == 0f)
+        if ( currentItem != null)
         {
             if (finishedClick)
             {
@@ -184,9 +190,11 @@ public class ItemListManager : MonoBehaviour
     
     private GameObject UseItem()
     {
-        var item = itemList.Dequeue();
+        var index = itemList.Count - 1;
+        var item = itemList[0];
+        itemList.RemoveAt(0);
         
-        itemList.Enqueue(GenerateNewItem());
+        itemList.Insert(index, GenerateNewItem());
         ItemListChanged.Invoke();
 
         return item;
@@ -195,5 +203,6 @@ public class ItemListManager : MonoBehaviour
     private void ChangeHoldItem()
     {
         canChangeHoldItem = false;
+        
     }
 }
