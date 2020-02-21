@@ -275,33 +275,11 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 493142791}
-        m_MethodName: ManageCurrentItem
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 5ec8d7d8-bd64-487e-8204-bbadec1757ed
     m_ActionName: Player/Fire[/Gamepad/rightTrigger,/Mouse/leftButton,/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 493142791}
-        m_MethodName: ManagePointerPosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 122c75e3-121a-4c1f-8113-41b121c5e650
     m_ActionName: Player/Point[/Mouse/position,/Mouse/position]
   - m_PersistentCalls:
@@ -379,10 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4eec58fe85d2f72adf6f1cc380af55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionArrow: {fileID: 1520655211}
-  DefaultCooldown: 1
-  minimumAdequateDistance: 1
-  itemDropSpeed: 5
+  DefaultCooldown: 0.7
+  itemList: []
   itemListMaxSize: 3
   PossibleItems:
   - {fileID: 5410040700684619949, guid: 4c03e1e711f25fa7ab7cd3643d36e412, type: 3}
@@ -401,6 +377,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  directionArrow: {fileID: 1520655211}
+  minimumAdequateDistance: 1
+  itemDropSpeed: 5
 --- !u!1 &564730238
 GameObject:
   m_ObjectHideFlags: 0

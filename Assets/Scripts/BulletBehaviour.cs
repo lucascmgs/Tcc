@@ -17,12 +17,15 @@ public class BulletBehaviour : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Obstacle")
+        if (other.tag == "Obstacle" && other. name.Contains("Rock"))
         {
             Destroy(other.gameObject);
-            RemoveBullet();
+        }
+        if(other.tag != "Player")
+        {
+            Destroy(this.gameObject);
         }
     }
 

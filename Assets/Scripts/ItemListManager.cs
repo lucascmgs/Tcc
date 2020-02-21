@@ -42,20 +42,27 @@ public class ItemListManager : MonoBehaviour
 
     private GameObject holdItem;
     
-    private Vector3 mousePositionInWorld = Vector3.zero;
-    
-    private Vector2 lastAdequateMousePosition = Vector2.zero;
-    
-    private Pointer currentMouse;
+    private Vector3 pointerPositionInWorld = Vector3.zero;
+        
+    private Pointer currentPointer;
     
     private SpriteRenderer arrowRenderer;
 
     private bool canChangeHoldItem = true;
+
+    private bool isPressing = false;
     #endregion
     
     void Start()
     {
-        currentMouse = Mouse.current;
+        if (Touchscreen.current != null)
+        {
+            currentPointer = Touchscreen.current;
+        } else
+        {
+            currentPointer = Mouse.current;
+        }
+        
         Random.InitState(System.DateTime.UtcNow.Second);
         if (ItemListChanged == null)
         {
@@ -78,6 +85,25 @@ public class ItemListManager : MonoBehaviour
 
     void Update()
     {
+        if(currentPointer.press.isPressed)
+        {
+            ManagePointerMove(currentPointer.position.ReadValue());
+
+            if (!isPressing)
+            {
+                isPressing = true;
+                ManageClick(false);
+            }
+            
+        } else
+        {
+            if (isPressing)
+            {
+                isPressing = false;
+                ManageClick(true);
+            }
+        }
+       
         if (currentCooldown > 0)
         {
             currentCooldown -= Time.deltaTime;
@@ -90,18 +116,17 @@ public class ItemListManager : MonoBehaviour
     }
 
     
-    public void ManagePointerPosition(InputAction.CallbackContext context)
+    public void ManagePointerMove(Vector2 positionValue)
     {
-        var positionValue = context.ReadValue<Vector2>();
-
-        Debug.Log(positionValue);
         
-        mousePositionInWorld = Camera.main.ScreenToWorldPoint(positionValue);
-        mousePositionInWorld.z = 0;
+        Debug.Log(positionValue);
+
+        pointerPositionInWorld = Camera.main.ScreenToWorldPoint(positionValue);
+        pointerPositionInWorld.z = 0;
 
         if (currentItem != null)
         {
-            var distanceFromObject = MouseDistanceFromCurrentItem();
+            var distanceFromObject = PointerDistanceFromCurrentItem();
             if (distanceFromObject.magnitude > minimumAdequateDistance)
             {
                 distanceFromObject.Normalize();
@@ -123,10 +148,8 @@ public class ItemListManager : MonoBehaviour
         
     }
     
-    public void ManageCurrentItem(InputAction.CallbackContext context)
+    public void ManageClick(bool finishedClick)
     {
-
-        var finishedClick = !context.performed;
 
         if (currentCooldown > 0f)
         {
@@ -138,14 +161,14 @@ public class ItemListManager : MonoBehaviour
             
             var newItem = UseItem();
 
-            currentItem = PhotonNetwork.Instantiate(newItem.name, mousePositionInWorld, Quaternion.identity);
+            currentItem = PhotonNetwork.Instantiate(newItem.name, pointerPositionInWorld, Quaternion.identity);
             
         } 
         if ( currentItem != null)
         {
             if (finishedClick)
             {
-                Vector2 newVelocity = - MouseDistanceFromCurrentItem();
+                Vector2 newVelocity = - PointerDistanceFromCurrentItem();
                 if (newVelocity == Vector2.zero)
                 {
                     newVelocity = Vector2.left;
@@ -172,11 +195,11 @@ public class ItemListManager : MonoBehaviour
         
     }
 
-    private Vector2 MouseDistanceFromCurrentItem()
+    private Vector2 PointerDistanceFromCurrentItem()
     {
         if (currentItem != null)
         {
-            return mousePositionInWorld - currentItem.transform.position;
+            return pointerPositionInWorld - currentItem.transform.position;
         }
 
         return Vector2.positiveInfinity;

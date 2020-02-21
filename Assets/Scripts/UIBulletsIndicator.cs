@@ -36,8 +36,7 @@ public class UIBulletsIndicator : MonoBehaviour
         {
             if (newCount > bullets.Count)
             {
-            
-
+           
                 var newBulletIndicator = Instantiate(bulletIndicatorPrefab, this.transform);
             
             
