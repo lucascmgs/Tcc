@@ -379,7 +379,7 @@ MonoBehaviour:
         m_CallState: 2
   directionArrow: {fileID: 1520655211}
   minimumAdequateDistance: 1
-  itemDropSpeed: 5
+  itemDropSpeed: 10
 --- !u!1 &564730238
 GameObject:
   m_ObjectHideFlags: 0

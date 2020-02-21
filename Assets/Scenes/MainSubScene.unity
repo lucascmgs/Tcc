@@ -246,10 +246,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 32
-  m_RefResolutionX: 200
-  m_RefResolutionY: 140
+  m_RefResolutionX: 264
+  m_RefResolutionY: 150
   m_UpscaleRT: 0
-  m_PixelSnapping: 0
+  m_PixelSnapping: 1
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
@@ -280,7 +280,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.3167212
+  orthographic size: 2.3303797
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -405,8 +405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseTreshold: 0.25
-  bulletSpeed: 5
-  maxBullets: 5
+  bulletSpeed: 4
+  maxBullets: 4
   bulletPrefab: {fileID: 6660855192009155477, guid: 5f59b767b8874c482a65da8c88301ec4,
     type: 3}
 --- !u!1 &731626529

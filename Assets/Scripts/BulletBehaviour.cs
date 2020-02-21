@@ -23,7 +23,7 @@ public class BulletBehaviour : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
-        if(other.tag != "Player")
+        if(other.tag != "Player" && other.tag != "Bullet")
         {
             Destroy(this.gameObject);
         }
