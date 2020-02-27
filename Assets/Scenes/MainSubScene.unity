@@ -121,6 +121,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &159319935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 159319936}
+  - component: {fileID: 159319937}
+  m_Layer: 0
+  m_Name: Ceiling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &159319936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159319935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8, y: 2.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &159319937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159319935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e144db0c44b114c46a78163e3d02eaad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setTime: 0.6
+  randValue: 0.7
+  sprites:
+  - {fileID: 21300000, guid: 9722217eb36a7350ab541022ae539067, type: 3}
+  - {fileID: 21300000, guid: 7ce1a91d3cf893782ac10f4297c36f4f, type: 3}
+  - {fileID: 21300000, guid: fd88745e758097ba1acc7180cfac41bc, type: 3}
+  ceilingPrefab: {fileID: 1489478537873111491, guid: 3d8eec9083f8bbb42b0ddd12b02a98f6,
+    type: 3}
+  stalactitePrefab: {fileID: 6170861804549236660, guid: a67542ab9ab696f468c38b60c6fd7bbf,
+    type: 3}
 --- !u!1 &373893608
 GameObject:
   m_ObjectHideFlags: 0
