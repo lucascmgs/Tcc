@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ObstacleBehaviour : MonoBehaviourPunCallbacks, IPunObservable
 {
+
+    [SerializeField] private float speed = 6;
     private float Height;
     private Vector2 Velocity;
     private bool transferred = false;
@@ -52,14 +54,15 @@ public class ObstacleBehaviour : MonoBehaviourPunCallbacks, IPunObservable
     public void Transfer(float givenHeight, Vector2 givenVelocity)
     {
         render.enabled = true;
-        Debug.Log("Recebeu com altura " + givenHeight + " e velocidade " + givenVelocity);
         var newPos = Camera.main.ViewportToWorldPoint(new Vector3(1, givenHeight));
+
+        givenVelocity.Normalize();
 
         newPos.z = 0;
         this.transform.position = newPos;
         var rb = this.GetComponent<Rigidbody2D>();
-        rb.velocity = givenVelocity;
         this.transform.right = -givenVelocity;
+        rb.velocity = givenVelocity * speed;
 
     }
 }

@@ -50,12 +50,12 @@ public class GunBehaviour : MonoBehaviour
 
     public void Fire(InputAction.CallbackContext context)
     {
+        Debug.Log(bulletCount);
         if (context.performed)
         {
-            Debug.Log("uhul");
             if (bulletCount < maxBullets)
             {
-                var newPos = new Vector3(this.transform.position.x + directionVector.x/2, this.transform.position.y + directionVector.y/2, 0);
+                var newPos = new Vector3(this.transform.position.x + directionVector.x/2, this.transform.position.y + directionVector.y/2, -1);
                 var newBullet = Instantiate(bulletPrefab, newPos, Quaternion.identity);
                 newBullet.GetComponent<BulletBehaviour>().BulletRemoved.AddListener(DecreaseBulletCount);
                 

@@ -19,10 +19,13 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Obstacle")
+        if (other.tag == "Obstacle" && other. name.Contains("Rock"))
         {
             Destroy(other.gameObject);
-            RemoveBullet();
+        }
+        if(other.tag != "Player" && other.tag != "Bullet")
+        {
+            Destroy(this.gameObject);
         }
     }
 
