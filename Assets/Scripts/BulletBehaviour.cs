@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class BulletBehaviour : MonoBehaviour
 {
     public UnityEvent BulletRemoved;
-
     private void Start()
     {
         if (BulletRemoved == null)
@@ -19,10 +18,7 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Obstacle" && other. name.Contains("Rock"))
-        {
-            Destroy(other.gameObject);
-        }
+      
         if(other.tag != "Player" && other.tag != "Bullet")
         {
             Destroy(this.gameObject);

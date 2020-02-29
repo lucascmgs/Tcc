@@ -11,6 +11,9 @@ public class GunBehaviour : MonoBehaviour
     
     [SerializeField] private float bulletSpeed = 2;
 
+    [SerializeField] private AudioSource gunSound;
+
+
     public int maxBullets = 3;
 
     [SerializeField] private GameObject bulletPrefab;
@@ -55,6 +58,7 @@ public class GunBehaviour : MonoBehaviour
         {
             if (bulletCount < maxBullets)
             {
+                gunSound.Play();
                 var newPos = new Vector3(this.transform.position.x + directionVector.x/2, this.transform.position.y + directionVector.y/2, -1);
                 var newBullet = Instantiate(bulletPrefab, newPos, Quaternion.identity);
                 newBullet.GetComponent<BulletBehaviour>().BulletRemoved.AddListener(DecreaseBulletCount);

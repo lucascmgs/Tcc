@@ -13,6 +13,8 @@ public class SubHealthManager : MonoBehaviour
     [SerializeField] private float blinkInterval = 0.2f;
 
     [SerializeField] private float knockBackIntensity = 2f;
+
+    [SerializeField] private AudioSource damageSound;
     
     
     private bool isInvincible = false;
@@ -35,6 +37,7 @@ public class SubHealthManager : MonoBehaviour
 
     void TakeDamage(Vector2 sourcePosition, int receivedDamage = 1)
     {
+        damageSound.Play();
         if (!isInvincible)
         {
             Health -= receivedDamage;

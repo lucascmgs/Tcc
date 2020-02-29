@@ -8,6 +8,7 @@ public class ObstacleBehaviour : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     [SerializeField] private float speed = 6;
+    [SerializeField] private bool destructible = false;
     private float Height;
     private Vector2 Velocity;
     private bool transferred = false;
@@ -25,7 +26,7 @@ public class ObstacleBehaviour : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        
+
     }
 
     public void OnBecameInvisible()
@@ -37,17 +38,29 @@ public class ObstacleBehaviour : MonoBehaviourPunCallbacks, IPunObservable
 
             if (pos.y > 0 && pos.y < 1 && pos.x < 1)
             {
-                Debug.Log("Chamou");
                 var height = Camera.main.WorldToViewportPoint(new Vector3(0, this.transform.position.y)).y;
                 var velocity = this.GetComponent<Rigidbody2D>().velocity;
                 this.photonView.RPC("Transfer", RpcTarget.MasterClient, height, velocity);
             }
-            else 
+            else
             {
                 Destroy(this.gameObject);
             }
         }
-        
+
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (destructible)
+        {
+            if (other.tag == "Bullet")
+            {
+                Destroy(this.gameObject);
+            }
+
+        }
     }
 
     [PunRPC]
