@@ -17,13 +17,11 @@ public class SubMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-      
     }
 
     public void Update()
     {
     }
-
 
     public void Move(InputAction.CallbackContext context)
     {
@@ -31,8 +29,7 @@ public class SubMovement : MonoBehaviour
         movement.x *= horizontalSpeed;
         movement.y *= verticalSpeed;
 
-        rb.velocity = movement;   
-
+        rb.velocity = movement;
     }
     
 }
