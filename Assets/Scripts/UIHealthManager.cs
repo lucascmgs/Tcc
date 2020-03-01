@@ -13,13 +13,13 @@ namespace DefaultNamespace
         [SerializeField] 
         private Sprite[] sprites;
         
-        private SubHealthManager playerHealthManager;
+        private SubDamageBehaviour playerHealthManager;
 
         private Image image;
 
         private void Start()
         {
-            playerHealthManager = Player.GetComponent<SubHealthManager>();
+            playerHealthManager = Player.GetComponent<SubDamageBehaviour>();
             image = GetComponent<Image>();
         }
 
