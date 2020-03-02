@@ -16,7 +16,6 @@ public class LineBombBehaviour : MonoBehaviour
     [SerializeField] private Sprite _onSprite;
     [SerializeField] private Sprite _offSprite;
     [SerializeField] private GameObject _explosionPrefab;
-    [SerializeField] private AudioSource _bombBeep;
 
     private AudioManager _audioManager;
 
@@ -95,6 +94,7 @@ public class LineBombBehaviour : MonoBehaviour
         
         while (explosionsCount < _numberOfExplosions)
         {
+            _audioManager.Play("Explosion");
             var newPositivePosition = thisPos;
             var newNegativePosition = thisPos;
             if (_explosionsDirection == LineDirection.Horizontal)
