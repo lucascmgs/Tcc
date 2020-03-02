@@ -8,25 +8,16 @@ public class TopBehaviour : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        configure();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnBecameInvisible()
     {
-        verifyToDestroy();
-    }
+        var position = Camera.main.WorldToViewportPoint(this.transform.position);
 
-    void configure()
-    {
-        rb.velocity = new Vector2(-1.5f, 0);
-    }
-
-    void verifyToDestroy()
-    {
-        if(this.transform.position.x <= -7)
+        if (position.x <= 0)
         {
             Destroy(this.gameObject);
         }
+
     }
 }

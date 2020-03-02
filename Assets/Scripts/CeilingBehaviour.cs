@@ -6,48 +6,116 @@ using System;
 public class CeilingBehaviour : MonoBehaviour
 {
 
-    private float timeElapsed;
-    private bool createCeiling;
-    public float setTime;
+    public float vel;
+
     public float randValue;
 
-    public Sprite [] sprites;
+    public Sprite normalSprite;
+    public Sprite[] stalacniteSprites;
 
     [SerializeField] GameObject ceilingPrefab;
 
     [SerializeField] GameObject stalactitePrefab;
 
+    GameObject newCeiling;
+    GameObject newFloor;
+
+    float timeToInstatianteStalactite;
+    float stalactiteTimeElapsed;
+
+    float timeToInstantiateCeiling;
+    float ceilingTimeElapsed;
+
     void Start()
     {
-        timeElapsed = 0;
-        createCeiling = true;
+        newCeiling = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x, Camera.main.orthographicSize), Quaternion.identity);
+        newCeiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+
+        newFloor = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x, -Camera.main.orthographicSize), Quaternion.identity);
+        newFloor.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+        
+        newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+        newFloor.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+
+        stalactiteTimeElapsed = Time.time;
+        timeToInstatianteStalactite = 1 / vel;
+
+        ceilingTimeElapsed = Time.time;
+        timeToInstantiateCeiling = 1 / vel;
     }
 
     void Update()
     {
-        if (createCeiling) {
-            var newCeiling = Instantiate(ceilingPrefab, this.transform.position, Quaternion.identity);
-            var newValue = UnityEngine.Random.value;
+        createCelling();
+        tryToCreateStalactite();
+        tryToCreateCeiling();
+    }
 
-            if (newValue >= 0 && newValue <= 0.6)
-            {
-                newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
-                if (UnityEngine.Random.value > randValue)
-                {
-                    var newStalactite = Instantiate(stalactitePrefab, this.transform.position, Quaternion.identity);
-                }
-            }
+    void createCelling()
+    {
 
-            else if (newValue > 0.6 && newValue <= 0.8) newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
-            
-            else newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
-
-            createCeiling = false;
-            timeElapsed = Time.time;
-        }
-        else
+        if (newCeiling.transform.position.x + 1 <= this.transform.position.x)
         {
-            if(Time.time - timeElapsed >= setTime) { createCeiling = true; }
+
+            newCeiling = Instantiate(ceilingPrefab, new Vector2(newCeiling.transform.position.x + 1, Camera.main.orthographicSize), Quaternion.identity);
+            newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = normalSprite;
+            newCeiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+
+            newFloor = Instantiate(ceilingPrefab, new Vector2(newFloor.transform.position.x + 1, -Camera.main.orthographicSize), Quaternion.identity);
+            newFloor.GetComponent<SpriteRenderer>().flipY = true;
+            newFloor.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+
         }
     }
+
+    void tryToCreateStalactite()
+    {
+
+        if (stalactiteTimeElapsed + timeToInstatianteStalactite < Time.time)
+        {
+            if (UnityEngine.Random.value < randValue) { stalactiteTimeElapsed = Time.time; }
+
+            else
+            {
+                var stalactite = Instantiate(stalactitePrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 4), Quaternion.identity);
+                stalactite.GetComponent<Rigidbody2D>().velocity = new Vector2( -vel , 0 );
+                stalactiteTimeElapsed = Time.time;
+            }
+        }
+
+    }
+
+    void tryToCreateCeiling()
+    {
+        if (ceilingTimeElapsed + timeToInstantiateCeiling < Time.time)
+        {
+            if (UnityEngine.Random.value <= 0.25f) {
+                var ceiling = Instantiate(ceilingPrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 8), Quaternion.identity);
+                ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalacniteSprites[0];
+                ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+            }
+
+            else if (UnityEngine.Random.value > 0.25f && UnityEngine.Random.value < 0.5f)
+            {
+                var ceiling = Instantiate(ceilingPrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 8), Quaternion.identity);
+                ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalacniteSprites[0];
+                ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+
+                ceiling = Instantiate(ceilingPrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 6), Quaternion.identity);
+                ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalacniteSprites[1];
+                ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+
+            }
+
+            else if (UnityEngine.Random.value >= 0.5f && UnityEngine.Random.value < 0.75f)
+            {
+                var ceiling = Instantiate(ceilingPrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 6), Quaternion.identity);
+                ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalacniteSprites[1];
+                ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+            }
+
+            ceilingTimeElapsed = Time.time;
+        }
+    }
+
 }

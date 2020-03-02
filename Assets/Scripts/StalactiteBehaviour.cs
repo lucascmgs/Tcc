@@ -5,15 +5,16 @@ using UnityEngine;
 public class StalactiteBehaviour : MonoBehaviour
 {
     public float randomValueToFall;
-    private Rigidbody2D rb;
     private float timeElapsed = 0;
     public float speed;
+
+    private Rigidbody2D rb;
+    
     bool verify;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(-1.5f, 0);
         verify = true;
     }
     void Update()
@@ -25,7 +26,7 @@ public class StalactiteBehaviour : MonoBehaviour
             verify = false;
         }
         else { 
-            if(Time.time - timeElapsed > 0.5) { 
+            if(Time.time - timeElapsed > 1) { 
                 verify = true;
             }
         }
@@ -36,7 +37,22 @@ public class StalactiteBehaviour : MonoBehaviour
     {
         if(UnityEngine.Random.value > randomValueToFall)
         {
-            rb.velocity = new Vector2(-1.5f, -speed);
+            rb.velocity = new Vector2(rb.velocity.x, -speed);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bullet") Destroy(this.gameObject);
+    }
+
+    private void OnBecameInvisible()
+    {
+        var pos = Camera.main.WorldToViewportPoint(this.transform.position);
+
+        if(pos.x <= 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
