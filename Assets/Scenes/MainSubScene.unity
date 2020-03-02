@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 4325105397526826020, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4325105397526826020, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
@@ -273,7 +273,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -659,7 +659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094843576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -0.6580666, z: 0.028320312}
+  m_LocalPosition: {x: -0.6, y: -0.6580666, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 725582645}
@@ -892,7 +892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 99.6, y: -65}
+  m_AnchoredPosition: {x: 95, y: -325}
   m_SizeDelta: {x: 211.6, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463700077
@@ -953,6 +953,80 @@ MonoBehaviour:
   - {fileID: 6991072294313716159, guid: 41eac8f04146c21abb7ed43b13b87137, type: 3}
   - {fileID: 4318818541513014507, guid: 41eac8f04146c21abb7ed43b13b87137, type: 3}
   - {fileID: -3714470408968705343, guid: 41eac8f04146c21abb7ed43b13b87137, type: 3}
+--- !u!1 &1606433470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1606433472}
+  - component: {fileID: 1606433471}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1606433471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606433470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfeab80fc20a4673ab5bf1d7d0533cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 13d9ba7035553b346997f89fe10ead89, type: 3}
+    source: {fileID: 0}
+    pitch: 1
+    volume: 0
+    loop: 1
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 68673074057772842be2eacb7fb33c39, type: 3}
+    source: {fileID: 0}
+    pitch: 1
+    volume: 1
+    loop: 0
+  - name: Damage
+    clip: {fileID: 8300000, guid: 168975423906e5349bb3ce9b456595dc, type: 3}
+    source: {fileID: 0}
+    pitch: 1
+    volume: 1
+    loop: 0
+  - name: Beep
+    clip: {fileID: 8300000, guid: 46f69ee6b50b61c4691da284dfe29016, type: 3}
+    source: {fileID: 0}
+    pitch: 1
+    volume: 1
+    loop: 0
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 461089fbff7fe874487d46488f4dedc2, type: 3}
+    source: {fileID: 0}
+    pitch: 0.8
+    volume: 1
+    loop: 0
+--- !u!4 &1606433472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606433470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 63.46228, y: 203.31866, z: -69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1893789025
 GameObject:
   m_ObjectHideFlags: 0

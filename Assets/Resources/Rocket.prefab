@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8578935687412526053}
   - component: {fileID: 8578935687412526052}
   - component: {fileID: 50332421777774178}
+  - component: {fileID: 4365856612616663355}
   - component: {fileID: 5864456373837701928}
   - component: {fileID: 114113458789767698}
   - component: {fileID: 579505231916769170}
-  - component: {fileID: 4365856612616663355}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Obstacle
@@ -127,6 +127,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &4365856612616663355
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578935687412526055}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.007806929, y: 0.009757251}
+  m_Size: {x: 0.9726775, y: 0.4105997}
+  m_Direction: 1
 --- !u!114 &5864456373837701928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
+  destructible: 0
 --- !u!114 &579505231916769170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,19 +192,3 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!70 &4365856612616663355
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8578935687412526055}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.007806929, y: 0.009757251}
-  m_Size: {x: 0.9726775, y: 0.4105997}
-  m_Direction: 1

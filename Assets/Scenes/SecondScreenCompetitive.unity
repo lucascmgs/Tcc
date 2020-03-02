@@ -363,6 +363,8 @@ MonoBehaviour:
   PossibleItems:
   - {fileID: 5410040700684619949, guid: 4c03e1e711f25fa7ab7cd3643d36e412, type: 3}
   - {fileID: 8578935687412526055, guid: e2fe95ea350d70d7e9acda5d38b7fa78, type: 3}
+  - {fileID: 7996305468717138683, guid: 91fc7a7ed2c182c468ff97fc4814c522, type: 3}
+  - {fileID: 3528269048803800220, guid: 60d4cf4e2e1c8a443bf3da1c885d672d, type: 3}
   ItemListChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1146,7 +1148,7 @@ Transform:
   m_GameObject: {fileID: 1520655211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 846.64557, y: 176.5842, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1346,8 +1348,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8638445, y: 0.0018939395}
   m_AnchorMax: {x: 0.98083067, y: 0.96590906}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 6.6477966}
+  m_SizeDelta: {x: 0, y: 13.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2125894560
 MonoBehaviour:
