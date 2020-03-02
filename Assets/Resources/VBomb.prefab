@@ -173,10 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionsDirection: 0
-  _timeUntilFirstExplosion: 4
+  _timeUntilFirstExplosion: 3
   _initialBlinkTime: 1
   _numberOfExplosions: 5
-  _timeBetweenExplosions: 0.5
+  _timeBetweenExplosions: 0.2
   _distanceBetweenExplosions: 1
   _onSprite: {fileID: -344181558474047225, guid: b321e7ffcbd15514db4fbbae655e84b1,
     type: 3}
@@ -184,4 +184,5 @@ MonoBehaviour:
     type: 3}
   _explosionPrefab: {fileID: 8456912230627026381, guid: 19ce81d72e4802e459c316a618da2b03,
     type: 3}
-  _bombBeep: {fileID: 0}
+  _bombBeep: {fileID: 8700761643530235611, guid: c05c8fa731befb74c8a468767e092214,
+    type: 3}

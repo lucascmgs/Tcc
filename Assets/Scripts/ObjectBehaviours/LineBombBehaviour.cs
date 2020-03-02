@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using DefaultNamespace;
 using Photon.Pun;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class LineBombBehaviour : MonoBehaviour
     [SerializeField] private GameObject _explosionPrefab;
     [SerializeField] private AudioSource _bombBeep;
 
+    private AudioManager _audioManager;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;
@@ -24,6 +26,7 @@ public class LineBombBehaviour : MonoBehaviour
 
     private void Start()
     {
+        _audioManager = FindObjectOfType<AudioManager>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
@@ -72,7 +75,7 @@ public class LineBombBehaviour : MonoBehaviour
 
             timeUntilExplosion -= durationToWait;
             
-            _bombBeep.Play();
+            _audioManager.Play("Beep");
             FlipSprite();
             yield return new WaitForSeconds(durationToWait/2);
             FlipSprite();

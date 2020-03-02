@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 using UnityEngine;
 
 public class SubDamageBehaviour : MonoBehaviour
@@ -14,15 +15,14 @@ public class SubDamageBehaviour : MonoBehaviour
 
     [SerializeField] private float knockBackIntensity = 2f;
 
-    [SerializeField] private AudioSource damageSound;
-    
-    
     private bool isInvincible = false;
 
     private SpriteRenderer[] renderers;
+    private AudioManager _audioManager;
 
     private void Start()
     {
+        _audioManager = FindObjectOfType<AudioManager>(); 
         renderers = GetComponentsInChildren<SpriteRenderer>();
     }
 
@@ -37,7 +37,7 @@ public class SubDamageBehaviour : MonoBehaviour
 
     void TakeDamage(Vector2 sourcePosition, int receivedDamage = 1)
     {
-        damageSound.Play();
+        _audioManager.Play("Damage");
         if (!isInvincible)
         {
             Health -= receivedDamage;

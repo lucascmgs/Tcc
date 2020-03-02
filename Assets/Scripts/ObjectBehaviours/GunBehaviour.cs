@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,9 +11,6 @@ public class GunBehaviour : MonoBehaviour
     [SerializeField] private float mouseTreshold = 0.25f;
     
     [SerializeField] private float bulletSpeed = 2;
-
-    [SerializeField] private AudioSource gunSound;
-
 
     public int maxBullets = 3;
 
@@ -26,11 +24,13 @@ public class GunBehaviour : MonoBehaviour
     private Vector2 directionVector;
 
     [NonSerialized] public int bulletCount = 0;
-    
+
+    private AudioManager _audioManager;
     
 
     private void Start()
     {
+        _audioManager = FindObjectOfType<AudioManager>();
         currentMouse = Mouse.current;
         mainCamera = Camera.main;
     }
@@ -58,7 +58,7 @@ public class GunBehaviour : MonoBehaviour
         {
             if (bulletCount < maxBullets)
             {
-                gunSound.Play();
+                _audioManager.Play("Shoot");
                 var newPos = new Vector3(this.transform.position.x + directionVector.x/2, this.transform.position.y + directionVector.y/2, -1);
                 var newBullet = Instantiate(bulletPrefab, newPos, Quaternion.identity);
                 newBullet.GetComponent<BulletBehaviour>().BulletRemoved.AddListener(DecreaseBulletCount);
