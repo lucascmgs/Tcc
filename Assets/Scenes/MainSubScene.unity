@@ -247,6 +247,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3813216141464613818, guid: 01fe9ede921aec74db09ca98d5683e36,
         type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: velocityTimeElapsed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: timeToIncreaseVelocity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4325105397526826203, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
       propertyPath: m_Name

@@ -10,14 +10,4 @@ public class TopBehaviour : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
     }
 
-    public void OnBecameInvisible()
-    {
-        var position = Camera.main.WorldToViewportPoint(this.transform.position);
-
-        if (position.x <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-
-    }
 }
