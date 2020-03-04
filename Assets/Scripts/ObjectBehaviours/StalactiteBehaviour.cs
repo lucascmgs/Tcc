@@ -39,6 +39,7 @@ public class StalactiteBehaviour : MonoBehaviour
     {
         if(UnityEngine.Random.value > randomValueToFall)
         {
+            this.transform.parent = null;
             rb.velocity = new Vector2(rb.velocity.x, -speed);
             alreadyFallen = true;
         }
