@@ -183,6 +183,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: ceilingSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: floorSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: ceilingSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: a452a0f09122da14fadb1e5f3ce8770f,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: ceilingSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 37c9a7a98daa5174b94aae1e06be4e63,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: ceilingSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 580f4de2a5f3b264aa3736b889774653,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: ceilingSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: bb9c8b18a7996d44fbb29672297d9ee4,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: floorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3a890b120e898f744b0dde9e21736a9f,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: floorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: c341b72851a746d46b5917700660644c,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: floorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c4f33a6f9f69d84db97f6a57ff5c202,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: floorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: e42ef45b022aa7c4baa4b2861c4274e6,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: floorPrefab
+      value: 
+      objectReference: {fileID: 3813216141464613818, guid: 01fe9ede921aec74db09ca98d5683e36,
+        type: 3}
     - target: {fileID: 4325105397526826203, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
       propertyPath: m_Name
@@ -315,10 +379,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 32
-  m_RefResolutionX: 400
-  m_RefResolutionY: 225
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
   m_UpscaleRT: 0
-  m_PixelSnapping: 1
+  m_PixelSnapping: 0
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
@@ -614,6 +678,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 5
   verticalSpeed: 3
+  floorPrefab: {fileID: 3813216141464613818, guid: 01fe9ede921aec74db09ca98d5683e36,
+    type: 3}
+  ceilingPrefab: {fileID: 1489478537873111491, guid: 3d8eec9083f8bbb42b0ddd12b02a98f6,
+    type: 3}
 --- !u!50 &1094843578
 Rigidbody2D:
   serializedVersion: 4

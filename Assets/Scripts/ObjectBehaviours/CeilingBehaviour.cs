@@ -7,14 +7,14 @@ public class CeilingBehaviour : MonoBehaviour
 {
 
     public float vel;
-
     public float randValue;
 
-    public Sprite normalSprite;
+    public Sprite[] ceilingSprites;
+    public Sprite[] floorSprites;
     public Sprite[] stalacniteSprites;
 
     [SerializeField] GameObject ceilingPrefab;
-
+    [SerializeField] GameObject floorPrefab;
     [SerializeField] GameObject stalactitePrefab;
 
     GameObject newCeiling;
@@ -56,13 +56,14 @@ public class CeilingBehaviour : MonoBehaviour
 
         if (newCeiling.transform.position.x + 1 <= this.transform.position.x)
         {
+            var rand = new System.Random();
 
             newCeiling = Instantiate(ceilingPrefab, new Vector2(newCeiling.transform.position.x + 1, Camera.main.orthographicSize), Quaternion.identity);
-            newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = normalSprite;
+            newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = ceilingSprites[rand.Next(0,4)];
             newCeiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
 
-            newFloor = Instantiate(ceilingPrefab, new Vector2(newFloor.transform.position.x + 1, -Camera.main.orthographicSize), Quaternion.identity);
-            newFloor.GetComponent<SpriteRenderer>().flipY = true;
+            newFloor = Instantiate(floorPrefab, new Vector2(newFloor.transform.position.x + 1, -Camera.main.orthographicSize), Quaternion.identity);
+            newFloor.gameObject.GetComponent<SpriteRenderer>().sprite = floorSprites[rand.Next(0, 4)];
             newFloor.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
 
         }
