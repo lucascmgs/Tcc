@@ -26,7 +26,9 @@ public class BackgroundBehaviour : MonoBehaviour
 
         if(difPos != 0)
         {
-            this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (difPos * Time.deltaTime * 3));
+            this.transform.position = new Vector2(this.transform.position.x, this.transform.position.y + (difPos * Time.deltaTime * 2));
         }
     }
+
+
 }
