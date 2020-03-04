@@ -16,11 +16,15 @@ public class CeilingBehaviour : MonoBehaviour
     [SerializeField] GameObject ceilingPrefab;
     [SerializeField] GameObject floorPrefab;
     [SerializeField] GameObject stalactitePrefab;
+    [SerializeField] GameObject backgroundPrefab;
+
+    GameObject backgroundComponent;
 
     [SerializeField] private Queue<GameObject> ceilingList;
 
     GameObject newCeiling;
     GameObject newFloor;
+    GameObject newBg;
 
     public float timeToIncreaseVelocity;
     float velocityTimeElapsed;
@@ -30,6 +34,8 @@ public class CeilingBehaviour : MonoBehaviour
 
     void Start()
     {
+        backgroundComponent = FindObjectOfType<BackgroundBehaviour>().gameObject;
+
         ceilingList = new Queue<GameObject>();
 
         newCeiling = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x, Camera.main.orthographicSize), Quaternion.identity);
@@ -37,19 +43,24 @@ public class CeilingBehaviour : MonoBehaviour
 
         newFloor = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x, -Camera.main.orthographicSize), Quaternion.identity);
         newFloor.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
-        
+
+        backgroundComponent.transform.position = new Vector2(this.transform.position.x, -Camera.main.orthographicSize + 0.3f);
+        newBg = Instantiate(backgroundPrefab, backgroundComponent.transform.position, Quaternion.identity);
+        newBg.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+
         newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = null;
         newFloor.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+        newBg.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
         velocityTimeElapsed = Time.time;
     }
 
     void Update()
     {
-        generateCeiling();
+        generateMap();
     }
 
-    void generateCeiling()
+    void generateMap()
     {
 
         if (newCeiling.transform.position.x + 1 <= this.transform.position.x)
@@ -66,6 +77,9 @@ public class CeilingBehaviour : MonoBehaviour
             newFloor.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
             ceilingList.Enqueue(newFloor);
 
+            newBg = Instantiate(backgroundPrefab, new Vector3(newBg.transform.position.x + 1, backgroundComponent.transform.position.y, 1), Quaternion.identity, backgroundComponent.transform);
+            newBg.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+
             tryToCreateStalactite();
             tryToCreateCeiling();
 
@@ -74,7 +88,7 @@ public class CeilingBehaviour : MonoBehaviour
                 Destroy(ceilingList.Dequeue());
             }
 
-            updateVelocity();
+            //updateVelocity();
 
         }
     }
