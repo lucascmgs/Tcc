@@ -46,18 +46,20 @@ MonoBehaviour:
   vel: 1.5
   randValue: 0.6
   ceilingSprites:
-  - {fileID: 21300000, guid: a452a0f09122da14fadb1e5f3ce8770f, type: 3}
-  - {fileID: 21300000, guid: 37c9a7a98daa5174b94aae1e06be4e63, type: 3}
-  - {fileID: 21300000, guid: 580f4de2a5f3b264aa3736b889774653, type: 3}
-  - {fileID: 21300000, guid: bb9c8b18a7996d44fbb29672297d9ee4, type: 3}
+  - {fileID: -2974146099096963975, guid: 8c48d6cb05d30ea4d9d57a8b81e65049, type: 3}
+  - {fileID: 7382407524781758199, guid: 8c48d6cb05d30ea4d9d57a8b81e65049, type: 3}
+  - {fileID: 6076815238994194811, guid: 8c48d6cb05d30ea4d9d57a8b81e65049, type: 3}
+  - {fileID: -8973257111637991670, guid: 8c48d6cb05d30ea4d9d57a8b81e65049, type: 3}
   floorSprites:
-  - {fileID: 21300000, guid: 3a890b120e898f744b0dde9e21736a9f, type: 3}
-  - {fileID: 21300000, guid: c341b72851a746d46b5917700660644c, type: 3}
-  - {fileID: 21300000, guid: 8c4f33a6f9f69d84db97f6a57ff5c202, type: 3}
-  - {fileID: 21300000, guid: e42ef45b022aa7c4baa4b2861c4274e6, type: 3}
-  stalacniteSprites:
-  - {fileID: 21300000, guid: fd88745e758097ba1acc7180cfac41bc, type: 3}
-  - {fileID: 21300000, guid: 7ce1a91d3cf893782ac10f4297c36f4f, type: 3}
+  - {fileID: -7496212877325346552, guid: ba8469074927b674e8b14d49d3fb721d, type: 3}
+  - {fileID: 461538566879064763, guid: ba8469074927b674e8b14d49d3fb721d, type: 3}
+  - {fileID: 6131794371149369604, guid: ba8469074927b674e8b14d49d3fb721d, type: 3}
+  - {fileID: -4074484908987595953, guid: ba8469074927b674e8b14d49d3fb721d, type: 3}
+  stalactiteSprites:
+  - {fileID: 8551208060148282258, guid: fb1b36cb2be3d204eab9c6b6b84903d3, type: 3}
+  - {fileID: -8575258315808932079, guid: fb1b36cb2be3d204eab9c6b6b84903d3, type: 3}
+  - {fileID: -8809282776163490940, guid: fb1b36cb2be3d204eab9c6b6b84903d3, type: 3}
+  - {fileID: -8768786473814627184, guid: fb1b36cb2be3d204eab9c6b6b84903d3, type: 3}
   ceilingPrefab: {fileID: 1489478537873111491, guid: 3d8eec9083f8bbb42b0ddd12b02a98f6,
     type: 3}
   floorPrefab: {fileID: 3813216141464613818, guid: 01fe9ede921aec74db09ca98d5683e36,

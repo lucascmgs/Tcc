@@ -11,7 +11,7 @@ public class CeilingBehaviour : MonoBehaviour
 
     public Sprite[] ceilingSprites;
     public Sprite[] floorSprites;
-    public Sprite[] stalacniteSprites;
+    public Sprite[] stalactiteSprites;
 
     [SerializeField] GameObject ceilingPrefab;
     [SerializeField] GameObject floorPrefab;
@@ -106,14 +106,14 @@ public class CeilingBehaviour : MonoBehaviour
     {
         if (UnityEngine.Random.value <= 0.5f) {
             var ceiling = Instantiate(ceilingPrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 8), Quaternion.identity, newCeiling.transform);
-            ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalacniteSprites[0];
+            ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalactiteSprites[0];
             ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
         }
 
         else if (UnityEngine.Random.value > 0.5f)
         {
             var ceiling = Instantiate(ceilingPrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 6), Quaternion.identity, newCeiling.transform);
-            ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalacniteSprites[1];
+            ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalactiteSprites[1];
             ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
         }
     }
