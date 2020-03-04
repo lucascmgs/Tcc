@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: fb1b36cb2be3d204eab9c6b6b84903d3
+guid: 05f90e8d4b6f38344b979728834127be
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8551208060148282258
-    second: Stalactites 0
+      213: 165268138161536423
+    second: ParralaxFloors 0
   - first:
-      213: -8575258315808932079
-    second: Stalactites 1
+      213: -5372034149507423204
+    second: ParralaxFloors 1
   - first:
-      213: -8809282776163490940
-    second: Stalactites 2
+      213: 4734455139740509851
+    second: ParralaxFloors 2
   - first:
-      213: -8768786473814627184
-    second: Stalactites 3
+      213: -4310659791254821044
+    second: ParralaxFloors 3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -86,7 +86,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stalactites 0
+      name: ParralaxFloors 0
       rect:
         serializedVersion: 2
         x: 0
@@ -100,14 +100,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2937899ac6efba670800000000000000
-      internalID: 8551208060148282258
+      spriteID: 7adfecbfe762b4200800000000000000
+      internalID: 165268138161536423
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stalactites 1
+      name: ParralaxFloors 1
       rect:
         serializedVersion: 2
         x: 32
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11f7ef4deff8ef880800000000000000
-      internalID: -8575258315808932079
+      spriteID: c14a75d3763b275b0800000000000000
+      internalID: -5372034149507423204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stalactites 2
+      name: ParralaxFloors 2
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 483eec81df32fb580800000000000000
-      internalID: -8809282776163490940
+      spriteID: b9661498dd924b140800000000000000
+      internalID: 4734455139740509851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stalactites 3
+      name: ParralaxFloors 3
       rect:
         serializedVersion: 2
         x: 32
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09c670d39230f4680800000000000000
-      internalID: -8768786473814627184
+      spriteID: c4762ba32c57d24c0800000000000000
+      internalID: -4310659791254821044
       vertices: []
       indices: 
       edges: []
