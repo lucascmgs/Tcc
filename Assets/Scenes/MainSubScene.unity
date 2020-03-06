@@ -183,112 +183,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalacniteSprites.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalactiteSprites.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: floorSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: -7496212877325346552, guid: ba8469074927b674e8b14d49d3fb721d,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: floorSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 461538566879064763, guid: ba8469074927b674e8b14d49d3fb721d,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: floorSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 6131794371149369604, guid: ba8469074927b674e8b14d49d3fb721d,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: floorSprites.Array.data[3]
-      value: 
-      objectReference: {fileID: -4074484908987595953, guid: ba8469074927b674e8b14d49d3fb721d,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalacniteSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: -8809282776163490940, guid: fb1b36cb2be3d204eab9c6b6b84903d3,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalacniteSprites.Array.data[3]
-      value: 
-      objectReference: {fileID: -8768786473814627184, guid: fb1b36cb2be3d204eab9c6b6b84903d3,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalacniteSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 8551208060148282258, guid: fb1b36cb2be3d204eab9c6b6b84903d3,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalacniteSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: -8575258315808932079, guid: fb1b36cb2be3d204eab9c6b6b84903d3,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: ceilingSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: -2974146099096963975, guid: 8c48d6cb05d30ea4d9d57a8b81e65049,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: ceilingSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 7382407524781758199, guid: 8c48d6cb05d30ea4d9d57a8b81e65049,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: ceilingSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 6076815238994194811, guid: 8c48d6cb05d30ea4d9d57a8b81e65049,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: ceilingSprites.Array.data[3]
-      value: 
-      objectReference: {fileID: -8973257111637991670, guid: 8c48d6cb05d30ea4d9d57a8b81e65049,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalactiteSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 8551208060148282258, guid: fb1b36cb2be3d204eab9c6b6b84903d3,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalactiteSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: -8575258315808932079, guid: fb1b36cb2be3d204eab9c6b6b84903d3,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalactiteSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: -8809282776163490940, guid: fb1b36cb2be3d204eab9c6b6b84903d3,
-        type: 3}
-    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
-        type: 3}
-      propertyPath: stalactiteSprites.Array.data[3]
-      value: 
-      objectReference: {fileID: -8768786473814627184, guid: fb1b36cb2be3d204eab9c6b6b84903d3,
-        type: 3}
     - target: {fileID: 4325105397526826203, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
       propertyPath: m_Name
@@ -632,10 +526,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -654,7 +548,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -1002,8 +896,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 95, y: 65}
-  m_SizeDelta: {x: 211.6, y: 130}
+  m_AnchoredPosition: {x: 131, y: 129}
+  m_SizeDelta: {x: 212.7, y: 206.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463700077
 MonoBehaviour:
@@ -1211,10 +1105,10 @@ RectTransform:
   m_Father: {fileID: 1463700076}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60.17, y: -44.92}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -66.2, y: -76.7}
+  m_SizeDelta: {x: -137.2, y: -157.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893789027
 MonoBehaviour:
@@ -1229,6 +1123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gun: {fileID: 725582644}
-  distanceBetweenIndicators: 20
+  distanceBetweenIndicators: 40
   bulletIndicatorPrefab: {fileID: 6721511062806462656, guid: f5cbc377ee85ab53995bdd734a71d9f5,
     type: 3}

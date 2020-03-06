@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PhotonConnectScene.unity
     guid: 6336c9489a4082649810b3664addfa4a
   - enabled: 1
@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SecondScreenCoop.unity
     guid: 1baad59db736a1ed78347138694c369d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SecondScreenCompetitive.unity
     guid: 4a5475abb930729e18ed6c35cd0a7b4f
   m_configObjects:

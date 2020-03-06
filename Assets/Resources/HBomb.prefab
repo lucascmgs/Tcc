@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionsDirection: 0
-  _timeUntilFirstExplosion: 3
-  _initialBlinkTime: 1
+  _timeUntilFirstExplosion: 1
+  _initialBlinkTime: 0.1
   _numberOfExplosions: 5
   _timeBetweenExplosions: 0.2
   _distanceBetweenExplosions: 1
