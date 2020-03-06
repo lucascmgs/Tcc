@@ -33,7 +33,7 @@ public class LineBombBehaviour : MonoBehaviour
 
     private void OnBecameVisible()
     {
-        //if (PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient || !PhotonNetwork.IsConnected) 
         {
             StartCoroutine(BombBlink());
         }
