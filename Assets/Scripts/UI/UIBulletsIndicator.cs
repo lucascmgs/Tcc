@@ -30,6 +30,7 @@ public class UIBulletsIndicator : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(GetComponent<RectTransform>().rect);
         var newCount = _gunBehaviour.maxBullets - _gunBehaviour.bulletCount;
 
         while (newCount != bullets.Count)
@@ -38,9 +39,9 @@ public class UIBulletsIndicator : MonoBehaviour
             {
            
                 var newBulletIndicator = Instantiate(bulletIndicatorPrefab, this.transform);
-            
-            
                 var newRectTrans = newBulletIndicator.GetComponent<RectTransform>();
+
+                
                 newRectTrans.pivot = _rectTransform.pivot;
                 newRectTrans.anchoredPosition = newAnchoredPosition;
 
