@@ -12,15 +12,18 @@ public class CeilingBehaviour : MonoBehaviour
     public Sprite[] ceilingSprites;
     public Sprite[] floorSprites;
     public Sprite[] stalactiteSprites;
+    public Sprite[] backgroundSprites;
 
     [SerializeField] GameObject ceilingPrefab;
     [SerializeField] GameObject floorPrefab;
     [SerializeField] GameObject stalactitePrefab;
     [SerializeField] GameObject backgroundPrefab;
+    [SerializeField] GameObject ceilingStalactitePrefab;
 
     GameObject backgroundComponent;
 
     [SerializeField] private Queue<GameObject> ceilingList;
+    [SerializeField] private Queue<GameObject> backgroundList;
 
     GameObject newCeiling;
     GameObject newFloor;
@@ -37,6 +40,7 @@ public class CeilingBehaviour : MonoBehaviour
         backgroundComponent = FindObjectOfType<BackgroundBehaviour>().gameObject;
 
         ceilingList = new Queue<GameObject>();
+        backgroundList = new Queue<GameObject>();
 
         newCeiling = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x, Camera.main.orthographicSize), Quaternion.identity);
         newCeiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
@@ -44,8 +48,8 @@ public class CeilingBehaviour : MonoBehaviour
         newFloor = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x, -Camera.main.orthographicSize), Quaternion.identity);
         newFloor.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
 
-        backgroundComponent.transform.position = new Vector2(this.transform.position.x, -Camera.main.orthographicSize + 0.3f);
-        newBg = Instantiate(backgroundPrefab, backgroundComponent.transform.position, Quaternion.identity);
+        backgroundComponent.transform.position = new Vector3(this.transform.position.x, -Camera.main.orthographicSize, 10);
+        newBg = Instantiate(backgroundPrefab, backgroundComponent.transform.position, Quaternion.identity, backgroundComponent.transform);
         newBg.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
 
         newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = null;
@@ -77,8 +81,15 @@ public class CeilingBehaviour : MonoBehaviour
             newFloor.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
             ceilingList.Enqueue(newFloor);
 
-            newBg = Instantiate(backgroundPrefab, new Vector3(newBg.transform.position.x + 1, backgroundComponent.transform.position.y, 1), Quaternion.identity, backgroundComponent.transform);
-            newBg.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+            if(ceilingList.Count == 2)
+            {
+                backgroundComponent.transform.position = new Vector2(this.transform.position.x, -Camera.main.orthographicSize + 0.75f);
+            }
+
+            newBg = Instantiate(backgroundPrefab, new Vector3(newBg.transform.position.x + 1, backgroundComponent.transform.position.y, 10), Quaternion.identity, backgroundComponent.transform);
+            newBg.gameObject.GetComponent<SpriteRenderer>().sprite = backgroundSprites[rand.Next(0, 4)];
+            newBg.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel/2, 0);
+            backgroundList.Enqueue(newFloor);
 
             tryToCreateStalactite();
             tryToCreateCeiling();
@@ -86,6 +97,7 @@ public class CeilingBehaviour : MonoBehaviour
             if(ceilingList.Count >= 40) { 
                 Destroy(ceilingList.Dequeue());
                 Destroy(ceilingList.Dequeue());
+                Destroy(backgroundList.Dequeue());
             }
 
             //updateVelocity();
@@ -104,18 +116,11 @@ public class CeilingBehaviour : MonoBehaviour
 
     void tryToCreateCeiling()
     {
-        if (UnityEngine.Random.value <= 0.5f) {
-            var ceiling = Instantiate(ceilingPrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 8), Quaternion.identity, newCeiling.transform);
-            ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalactiteSprites[0];
-            ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
-        }
+        var rand = new System.Random();
 
-        else if (UnityEngine.Random.value > 0.5f)
-        {
-            var ceiling = Instantiate(ceilingPrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 6), Quaternion.identity, newCeiling.transform);
-            ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalactiteSprites[1];
-            ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
-        }
+        var ceiling = Instantiate(ceilingStalactitePrefab, new Vector3(newCeiling.transform.position.x, Camera.main.orthographicSize, 8), Quaternion.identity, newCeiling.transform);
+        ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalactiteSprites[rand.Next(0,4)];
+        ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
     }
 
     void updateVelocity()
@@ -125,6 +130,10 @@ public class CeilingBehaviour : MonoBehaviour
             vel += 0.2f;
 
             foreach(GameObject go in ceilingList)
+            {
+                go.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
+            }
+            foreach(GameObject go in backgroundList)
             {
                 go.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
             }
