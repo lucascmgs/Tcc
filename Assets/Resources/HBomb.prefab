@@ -175,7 +175,7 @@ MonoBehaviour:
   _explosionsDirection: 0
   _timeUntilFirstExplosion: 1
   _initialBlinkTime: 0.1
-  _numberOfExplosions: 5
+  _numberOfExplosions: 8
   _timeBetweenExplosions: 0.2
   _distanceBetweenExplosions: 1
   _onSprite: {fileID: -1119359471550052631, guid: 46dfcfe252cf3b4408c155da7bd90f27,

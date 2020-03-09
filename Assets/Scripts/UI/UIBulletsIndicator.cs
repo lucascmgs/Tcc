@@ -30,7 +30,6 @@ public class UIBulletsIndicator : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(GetComponent<RectTransform>().rect);
         var newCount = _gunBehaviour.maxBullets - _gunBehaviour.bulletCount;
 
         while (newCount != bullets.Count)

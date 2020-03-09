@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1636528564}
   - component: {fileID: 606653817}
   - component: {fileID: 8020167387427139258}
+  - component: {fileID: 4070912216140241375}
   m_Layer: 0
   m_Name: Stalactite
   m_TagString: Obstacle
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6170861804549236660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: -1.45, z: 0}
+  m_LocalPosition: {x: 6.94, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 344022193ad9b9c5f974d97dcc597afe, type: 3}
+  m_Sprite: {fileID: -4715140994999894586, guid: 344022193ad9b9c5f974d97dcc597afe,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,7 +138,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 1}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -145,13 +147,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.16, y: 0.94}
-      - {x: -0.16, y: 0}
-      - {x: -0.05, y: -0.51}
-      - {x: 0.03, y: -0.53}
-      - {x: 0.03, y: -0.53}
-      - {x: 0.13, y: -0.41}
-      - {x: 0.17, y: 0.93}
+    - - {x: -0.14087439, y: 1.9287608}
+      - {x: -0.08328962, y: 0.56399655}
+      - {x: -0.06261158, y: 0.43962264}
+      - {x: 0.017180443, y: 0.45197296}
+      - {x: 0.06173706, y: 0.48369813}
+      - {x: 0.110874176, y: 0.79446685}
+      - {x: 0.135046, y: 1.2367315}
+      - {x: 0.135046, y: 1.9345576}
 --- !u!114 &8020167387427139258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +168,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
+--- !u!95 &4070912216140241375
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170861804549236660}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 07ecae1e93948274eadaaf261b6f694a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
