@@ -70,17 +70,14 @@ public class connectionManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        startMode = Mode.Joined;
         statusMessage += "Entered room\n";
         LogCurrentPlayers();
-        if (PhotonNetwork.IsMasterClient)
-        {
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            SceneManager.LoadScene(2);
-        }
+
+        StartCoroutine(WaitPlayer());
     }
+    
+    
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
@@ -168,6 +165,21 @@ public class connectionManager : MonoBehaviourPunCallbacks
         PhotonNetwork.NickName = nickName;
     }
 
-
+    private IEnumerator WaitPlayer()
+    {
+        statusMessage += "Waiting for the other player\n";
+        while (PhotonNetwork.CurrentRoom.PlayerCount < 2)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        if (PhotonNetwork.IsMasterClient)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
     
 }
