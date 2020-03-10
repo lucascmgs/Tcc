@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEditor;
 using UnityEngine.SceneManagement;
 
 public class connectionManager : MonoBehaviourPunCallbacks
@@ -30,6 +32,9 @@ public class connectionManager : MonoBehaviourPunCallbacks
 
     private Color grayColor = new Color(0.5f, 0.5f, 0.5f);
     private Color whiteColor = new Color(1, 1, 1);
+
+    [SerializeField] private float playerWaitTimeOut = 10;
+    
     
     #region Status message helper
     private void SetStatusMessage(string message)
@@ -37,6 +42,7 @@ public class connectionManager : MonoBehaviourPunCallbacks
         statusText.GetComponent<Text>().text = message;
     }
 
+    
     private string statusMessage
     {
         get { return statusText.GetComponent<Text>().text; }
@@ -70,17 +76,14 @@ public class connectionManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        startMode = Mode.Joined;
         statusMessage += "Entered room\n";
         LogCurrentPlayers();
-        if (PhotonNetwork.IsMasterClient)
-        {
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            SceneManager.LoadScene(2);
-        }
+
+        StartCoroutine(WaitPlayer());
     }
+    
+    
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
@@ -105,19 +108,20 @@ public class connectionManager : MonoBehaviourPunCallbacks
     }
     
     
-    private void CreateRoomMode(){
+    private void CreateRoomMode()
+    {
+        CreateButton.GetComponent<Button>().interactable = false;
+        JoinButton.GetComponent<Button>().interactable = true;
         startMode = Mode.Creating;
-        JoinButton.GetComponent<Image>().color = whiteColor;
-        CreateButton.GetComponent<Image>().color = grayColor;
         ConfirmButton.SetActive(true);
         CancelButton.SetActive(true);
         RoomNameInput.SetActive(true);
     }
 
     private void JoinRoomMode(){
+        CreateButton.GetComponent<Button>().interactable = true;
+        JoinButton.GetComponent<Button>().interactable = false;
         startMode = Mode.Joining;
-        JoinButton.GetComponent<Image>().color = grayColor;
-        CreateButton.GetComponent<Image>().color = whiteColor;
         ConfirmButton.SetActive(true);
         CancelButton.SetActive(true);
         RoomNameInput.SetActive(true);
@@ -152,14 +156,13 @@ public class connectionManager : MonoBehaviourPunCallbacks
     }
 
     public void Cancel(){
+        CreateButton.GetComponent<Button>().interactable = true;
+        JoinButton.GetComponent<Button>().interactable = true;
         CreateButton.SetActive(true);
         JoinButton.SetActive(true);
-        
-        CreateButton.GetComponent<Image>().color = whiteColor;
-        JoinButton.GetComponent<Image>().color = whiteColor;
         RoomNameInput.SetActive(false);
         ConfirmButton.SetActive(false);
-
+        CancelButton.SetActive(false);
     }
 
     public void SetNickName(){
@@ -168,6 +171,54 @@ public class connectionManager : MonoBehaviourPunCallbacks
         PhotonNetwork.NickName = nickName;
     }
 
+    private IEnumerator WaitPlayer()
+    {
+        float startTime = Time.timeSinceLevelLoad;
+        DeactivateButtons();
+        statusMessage = "Waiting for the other player\n";
+        bool loadLevels = true;
+        
+        while (PhotonNetwork.CurrentRoom.PlayerCount < 2)
+        {
+            if (Time.timeSinceLevelLoad - startTime > playerWaitTimeOut)
+            {
+                statusMessage = "Timeout waiting for another player, try again!";
+                loadLevels = false;
+                ActivateButtons();
+                break;
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
 
+        if (loadLevels)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                SceneManager.LoadScene(2);
+            }
+        }
+        
+    }
+
+    private void DeactivateButtons()
+    {
+        ConfirmButton.SetActive(false);
+        CancelButton.SetActive(false);
+        CreateButton.SetActive(false);
+        JoinButton.SetActive(false);
+        NickNameInput.SetActive(false);
+        RoomNameInput.SetActive(false);
+    }
+
+    private void ActivateButtons()
+    {
+        NickNameInput.SetActive(true);
+        CreateButton.SetActive(true);
+        JoinButton.SetActive(true);
+    }
     
 }
