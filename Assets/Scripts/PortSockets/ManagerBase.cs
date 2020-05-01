@@ -27,7 +27,6 @@ namespace DefaultNamespace
 
             float timeSinceLastMessage = Time.time - lastMessageTime;
 
-
             if (timeSinceLastMessage > timeOut && lastMessageTime > 0)
             {
                 ManageConnectionStopped();
@@ -41,7 +40,6 @@ namespace DefaultNamespace
 
                 while (_device.GetNextMessage(out msg))
                 {
-                    Debug.Log("Chegou mensagem");
                     switch (msg.eventType)
                     {
                         case Telepathy.EventType.Connected:
@@ -50,7 +48,6 @@ namespace DefaultNamespace
                             Debug.Log("Connected");
                             break;
                         case Telepathy.EventType.Data:
-                            Debug.Log("Data: " + BitConverter.ToString(msg.data));
                             DecodeMessage(msg.data);
                             break;
                         case Telepathy.EventType.Disconnected:
@@ -66,7 +63,7 @@ namespace DefaultNamespace
         {
         }
 
-        void ManageConnectionStopped()
+        protected void ManageConnectionStopped()
         {
             Destroy(this);
             SceneManager.LoadScene(0);

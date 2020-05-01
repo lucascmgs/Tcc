@@ -7,7 +7,7 @@ using UnityEngine;
 public class ObstacleBehaviour : MonoBehaviour
 {
 
-    [SerializeField] private float speed = 6;
+    public float speed = 6;
     [SerializeField] private bool destructible = false;
     [SerializeField] private int itemId;
     private float Height;
@@ -35,7 +35,10 @@ public class ObstacleBehaviour : MonoBehaviour
         
         
         var client = FindObjectOfType<ClientManager>();
-        
+        if (client == null)
+        {
+            return;
+        }
         
         
         var pos = Camera.main.WorldToViewportPoint(this.transform.position);
@@ -44,10 +47,11 @@ public class ObstacleBehaviour : MonoBehaviour
         {
             var height = Camera.main.WorldToViewportPoint(new Vector3(0, this.transform.position.y)).y;
             var velocity = this.GetComponent<Rigidbody2D>().velocity;
-            
-            
-            
-            client.Send("Spawn;" + itemId + ";" + height + ";" + velocity.x + ";" + velocity.y);
+
+
+            string envio = "Spawn;" + itemId + ";" + height + ";" + velocity.x + ";" + velocity.y;
+            Debug.Log(envio);
+            client.Send(envio);
         }
         
         

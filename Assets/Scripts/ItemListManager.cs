@@ -118,7 +118,6 @@ public class ItemListManager : MonoBehaviour
     public void ManagePointerMove(Vector2 positionValue)
     {
         
-        Debug.Log(positionValue);
 
         pointerPositionInWorld = Camera.main.ScreenToWorldPoint(positionValue);
         pointerPositionInWorld.z = 0;

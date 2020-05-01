@@ -66,13 +66,16 @@ namespace DefaultNamespace
 
             if (decodedMessage.Contains("Spawn"))
             {
+                Debug.Log("Spawnou");
                 if (spawnerReceiver == null)
                 {
                     spawnerReceiver = FindObjectOfType<SpawnerReceiver>();
                 }
 
+                Debug.Log(decodedMessage);
                 var splitResult = decodedMessage.Split(';');
-                spawnerReceiver.Spawn(int.Parse(splitResult[1]), float.Parse(splitResult[2]), float.Parse(splitResult[2]), float.Parse(splitResult[3]));
+                
+                spawnerReceiver.Spawn(int.Parse(splitResult[1]), float.Parse(splitResult[2]), float.Parse(splitResult[3]), float.Parse(splitResult[4]));
             }
         }
 

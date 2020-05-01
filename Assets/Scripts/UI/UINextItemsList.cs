@@ -40,7 +40,6 @@ public class UINextItemsList : MonoBehaviour
     public void UpdateItemImages()
     {
         var imageArrayLength = itemImages.Length;
-        Debug.Log(imageArrayLength);
         if (itemList.Count > 0)
         {
             var index = 0;

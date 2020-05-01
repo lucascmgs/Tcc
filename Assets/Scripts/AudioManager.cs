@@ -25,7 +25,7 @@ namespace DefaultNamespace
                 Destroy(gameObject);
             }
             
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             soundBase = new Dictionary<string, Sound>();
             foreach (Sound s in _sounds)
             {

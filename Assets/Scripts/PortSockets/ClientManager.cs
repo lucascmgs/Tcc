@@ -10,32 +10,37 @@ using EventType = Telepathy.EventType;
 
 public class ClientManager : ManagerBase
 {
+    private bool _sceneChanged = false;
 
- private bool _sceneChanged = false;
-    
     public Client _client = new Client();
-   
-    
-    
+
+    private bool hasConnected = false;
+
+
     private void Awake()
     {
         _device = _client;
         Setup();
     }
 
-    private void Start()
-    {
-    }
 
     void Update()
     {
         if (_client.Connected)
         {
-            
-               CheckMessages();
-               Send("Ok");
+            hasConnected = true;
+            CheckMessages();
+            Send("Ok");
+        }
+        else
+        {
+            if (hasConnected)
+            {
+                ManageConnectionStopped();
+            }
         }
     }
+
     public void Connect(string givenAddress)
     {
         Debug.Log("Connecting");
@@ -51,12 +56,10 @@ public class ClientManager : ManagerBase
     {
         SceneManager.LoadScene("SecondScreenScene");
     }
-    
+
 
     private void OnDestroy()
-    { 
+    {
         _client.Disconnect();
     }
-    
-    
 }

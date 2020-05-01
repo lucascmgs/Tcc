@@ -58,33 +58,11 @@
                 },
                 {
                     "name": "",
-                    "id": "734ce69e-5f94-41d7-9576-35e4f025a14f",
+                    "id": "2767ebd1-fa98-4046-92ea-e764a9e5bb20",
                     "path": "<Pointer>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Point",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b7191bbd-1cd0-4f7d-9537-e02279d096c9",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Point",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ce0742fe-cc97-4a5f-a791-09bd23207d71",
-                    "path": "<Touchscreen>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Touch",
                     "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false

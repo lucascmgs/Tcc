@@ -18,12 +18,14 @@ public class SpawnerReceiver : MonoBehaviour
     {
         var newPos = Camera.main.ViewportToWorldPoint(new Vector3(1, givenHeight));
         newPos.z = 0;
-        
+        Debug.Log(velx + " " + vely);
         var newVelocity = new Vector2(velx, vely);
         newVelocity.Normalize();
-        
         var newItem = Instantiate(SpawnableObjects[objIndex], newPos, Quaternion.identity);
         newItem.transform.right = -newVelocity;
-        newItem.GetComponent<Rigidbody2D>().velocity = newVelocity;
+
+        var itemSpeed = newItem.GetComponent<ObstacleBehaviour>().speed;
+        
+        newItem.GetComponent<Rigidbody2D>().velocity = newVelocity * itemSpeed;
     }
 }
