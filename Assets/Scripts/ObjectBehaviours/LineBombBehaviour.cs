@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using DefaultNamespace;
-using Photon.Pun;
 using UnityEngine;
 
 public class LineBombBehaviour : MonoBehaviour
@@ -33,7 +32,8 @@ public class LineBombBehaviour : MonoBehaviour
 
     private void OnBecameVisible()
     {
-        if (PhotonNetwork.IsMasterClient || !PhotonNetwork.IsConnected) 
+        var server = FindObjectOfType<ServerManager>();
+        if (server != null) 
         {
             StartCoroutine(BombBlink());
         }

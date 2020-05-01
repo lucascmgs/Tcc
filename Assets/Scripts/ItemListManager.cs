@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -161,7 +160,7 @@ public class ItemListManager : MonoBehaviour
             
             var newItem = UseItem();
 
-            currentItem = PhotonNetwork.Instantiate(newItem.name, pointerPositionInWorld, Quaternion.identity);
+            currentItem = Instantiate(newItem, pointerPositionInWorld, Quaternion.identity);
             
         } 
         if ( currentItem != null)
