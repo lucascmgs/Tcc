@@ -3,6 +3,7 @@ using System.Text;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class BroadcastListener : MonoBehaviour
 
     private bool _started = false;
 
-    public Text status;
+    public TextMeshProUGUI status;
 
     [SerializeField] private StartManager startManager;
 
@@ -51,6 +52,7 @@ public class BroadcastListener : MonoBehaviour
 
     private async void Listen()
     {
+        status.text = "Listening for ip...";
         if (_started)
         {
             try

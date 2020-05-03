@@ -666,8 +666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541574c3f34e84e4ab6f86104a4249fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 5
-  verticalSpeed: 3
+  horizontalSpeed: 4
+  verticalSpeed: 2.5
   floorPrefab: {fileID: 3813216141464613818, guid: 01fe9ede921aec74db09ca98d5683e36,
     type: 3}
   ceilingPrefab: {fileID: 1489478537873111491, guid: 3d8eec9083f8bbb42b0ddd12b02a98f6,

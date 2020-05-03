@@ -62,7 +62,7 @@ namespace DefaultNamespace
 
         protected override void DecodeMessage(byte[] data)
         {
-            string decodedMessage = Encoding.Unicode.GetString(data);
+            string decodedMessage = Encoding.UTF8.GetString(data);
 
             if (decodedMessage.Contains("Spawn"))
             {
@@ -72,9 +72,13 @@ namespace DefaultNamespace
                     spawnerReceiver = FindObjectOfType<SpawnerReceiver>();
                 }
 
-                Debug.Log(decodedMessage);
+                decodedMessage.Replace(".", ",");
+                //Debug.Log(decodedMessage);
                 var splitResult = decodedMessage.Split(';');
-                
+                var res4 = splitResult[4];
+                Debug.Log(res4);
+                var newRes = float.Parse(res4);
+                Debug.Log(newRes);
                 spawnerReceiver.Spawn(int.Parse(splitResult[1]), float.Parse(splitResult[2]), float.Parse(splitResult[3]), float.Parse(splitResult[4]));
             }
         }

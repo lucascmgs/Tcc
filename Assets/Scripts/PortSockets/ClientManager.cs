@@ -4,6 +4,7 @@ using System.Text;
 using DefaultNamespace;
 using UnityEngine;
 using Telepathy;
+using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using EventType = Telepathy.EventType;
@@ -16,9 +17,14 @@ public class ClientManager : ManagerBase
 
     private bool hasConnected = false;
 
-
     private void Awake()
     {
+        
+        TMP_InputField ipInputField = FindObjectOfType<TMP_InputField>();
+        if (ipInputField != null && ipInputField.text != "")
+        {
+            Connect(ipInputField.text);
+        }
         _device = _client;
         Setup();
     }
@@ -43,13 +49,18 @@ public class ClientManager : ManagerBase
 
     public void Connect(string givenAddress)
     {
+        if (!givenAddress.Contains("192.168.1"))
+        {
+            givenAddress = "192.168.1." + givenAddress;
+        }
+        
         Debug.Log("Connecting");
         _client.Connect(givenAddress, Port);
     }
 
     public void Send(string message)
     {
-        _client.Send(Encoding.Unicode.GetBytes(message));
+        _client.Send(Encoding.UTF8.GetBytes(message));
     }
 
     protected override void ManageConnectionStart(int connectionId)

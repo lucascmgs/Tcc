@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using DefaultNamespace;
 using Telepathy;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ public class StartManager : MonoBehaviour
 {
     public GameObject clientPrefab;
     public GameObject serverPrefab;
-    public Text localIp;
+    public TextMeshProUGUI localIp;
     
     [NonSerialized]
     public GameObject InstantiatedServer;
@@ -22,8 +23,13 @@ public class StartManager : MonoBehaviour
     public Button hostButton;
     public Button connectButton;
     public Button stopButton;
-    
-    
+
+    public void Awake()
+    {
+        System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR", false);
+        System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("pt-BR", false);
+    }
+
     public void Start()
     {
         string hname = Dns.GetHostName();

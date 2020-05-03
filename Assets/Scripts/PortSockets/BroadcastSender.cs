@@ -3,6 +3,7 @@ using System.Collections;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,7 @@ namespace DefaultNamespace
 
         private IEnumerator _coroutine;
         
-        public Text status;
+        public TextMeshProUGUI status;
 
         [SerializeField] private StartManager startManager;
 
@@ -30,6 +31,7 @@ namespace DefaultNamespace
 
         public IEnumerator Broadcast()
         {
+
             Socket mySocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
             string hname = Dns.GetHostName();
@@ -54,9 +56,10 @@ namespace DefaultNamespace
             {
                 mySocket.SendTo(sendBuffer, endpoint);
 
+                status.text = "Starting Broadcast";
+
                 if (status != null)
                 {
-                    Debug.Log("ta");
                     status.text = "Broadcasting ip to " + endpoint.Address.ToString();
                 }
 
