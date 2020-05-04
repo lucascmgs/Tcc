@@ -13,7 +13,7 @@ namespace DefaultNamespace
         private Dictionary<string, Sound> soundBase;
 
         public static AudioManager Instance;
-        
+
         private void Awake()
         {
             if (Instance == null)
@@ -24,8 +24,8 @@ namespace DefaultNamespace
             {
                 Destroy(gameObject);
             }
-            
-            DontDestroyOnLoad(gameObject);
+
+            //DontDestroyOnLoad(gameObject);
             soundBase = new Dictionary<string, Sound>();
             foreach (Sound s in _sounds)
             {
@@ -40,19 +40,26 @@ namespace DefaultNamespace
 
         private void Start()
         {
-            Play("Theme");
+            if (GameOptions.playMusic)
+            {
+                Play("Theme");
+            }
         }
 
 
         public void Play(string soundName)
         {
-            var sound = soundBase[soundName];
-            if (sound == null)
+            if (GameOptions.playSounds)
             {
-                Debug.Log("There is no sound with the name " + soundName);
-                return;
+                var sound = soundBase[soundName];
+                if (sound == null)
+                {
+                    Debug.Log("There is no sound with the name " + soundName);
+                    return;
+                }
+
+                sound.source.Play();
             }
-            sound.source.Play();
         }
     }
 }

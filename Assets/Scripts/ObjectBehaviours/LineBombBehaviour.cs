@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
 using DefaultNamespace;
-using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LineBombBehaviour : MonoBehaviour
 {
@@ -33,7 +33,8 @@ public class LineBombBehaviour : MonoBehaviour
 
     private void OnBecameVisible()
     {
-        if (PhotonNetwork.IsMasterClient || !PhotonNetwork.IsConnected) 
+        var client = FindObjectOfType<ClientManager>();
+        if (client == null && SceneManager.GetActiveScene().name == "MainGameScene") 
         {
             StartCoroutine(BombBlink());
         }
@@ -73,13 +74,14 @@ public class LineBombBehaviour : MonoBehaviour
             }
 
             timeUntilExplosion -= durationToWait;
-            
-            _audioManager.Play("Beep");
+
+            if (_audioManager != null)
+            {
+                _audioManager.Play("Beep");
+            }
             FlipSprite();
             yield return new WaitForSeconds(durationToWait/2);
             FlipSprite();
-            
-
             yield return new WaitForSeconds(durationToWait/2);
         }
 
@@ -94,7 +96,10 @@ public class LineBombBehaviour : MonoBehaviour
         
         while (explosionsCount < _numberOfExplosions)
         {
-            _audioManager.Play("Explosion");
+            if (_audioManager != null)
+            {
+                _audioManager.Play("Explosion");
+            }
             var newPositivePosition = thisPos;
             var newNegativePosition = thisPos;
             if (_explosionsDirection == LineDirection.Horizontal)

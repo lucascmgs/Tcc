@@ -57,9 +57,6 @@ public class SubDamageBehaviour : MonoBehaviour
         var newFromPosition = new Vector3(fromPosition.x, fromPosition.y, this.transform.position.z);
         var direction = this.transform.position - newFromPosition;
         direction.Normalize();
-        
-        Debug.Log(direction);
-        
         this.transform.position += direction * knockBackIntensity;
     }
 

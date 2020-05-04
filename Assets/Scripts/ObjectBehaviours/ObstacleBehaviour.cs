@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
+using DefaultNamespace;
 using UnityEngine;
 
-public class ObstacleBehaviour : MonoBehaviourPunCallbacks, IPunObservable
+public class ObstacleBehaviour : MonoBehaviour
 {
 
-    [SerializeField] private float speed = 6;
+    public float speed = 6;
     [SerializeField] private bool destructible = false;
+    [SerializeField] private int itemId;
     private float Height;
     private Vector2 Velocity;
     private bool transferred = false;
@@ -18,36 +19,44 @@ public class ObstacleBehaviour : MonoBehaviourPunCallbacks, IPunObservable
     private void Start()
     {
         render = this.GetComponent<SpriteRenderer>();
-        if (PhotonNetwork.IsMasterClient)
-        {
-            render.enabled = false;
-        }
+        
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-
-    }
 
     public void OnBecameInvisible()
     {
+        var server = FindObjectOfType<ServerManager>();
 
-        if (!PhotonNetwork.IsMasterClient)
+        if (server != null)
         {
-            var pos = Camera.main.WorldToViewportPoint(this.transform.position);
-
-            if (pos.y > 0 && pos.y < 1 && pos.x < 1)
-            {
-                var height = Camera.main.WorldToViewportPoint(new Vector3(0, this.transform.position.y)).y;
-                var velocity = this.GetComponent<Rigidbody2D>().velocity;
-                this.photonView.RPC("Transfer", RpcTarget.MasterClient, height, velocity);
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
+            Destroy(this.gameObject);
+            return;
         }
+        
+        
+        var client = FindObjectOfType<ClientManager>();
+        if (client == null)
+        {
+            return;
+        }
+        
+        
+        var pos = Camera.main.WorldToViewportPoint(this.transform.position);
 
+        if (pos.y > 0 && pos.y < 1 && pos.x < 1)
+        {
+            var height = Camera.main.WorldToViewportPoint(new Vector3(0, this.transform.position.y)).y;
+            var velocity = this.GetComponent<Rigidbody2D>().velocity;
+
+
+            string envio = "Spawn;" + itemId + ";" + height + ";" + velocity.x + ";" + velocity.y;
+            Debug.Log(envio);
+            client.Send(envio);
+        }
+        
+        
+        
+        Destroy(this.gameObject);
     }
 
 
@@ -61,21 +70,5 @@ public class ObstacleBehaviour : MonoBehaviourPunCallbacks, IPunObservable
             }
 
         }
-    }
-
-    [PunRPC]
-    public void Transfer(float givenHeight, Vector2 givenVelocity)
-    {
-        render.enabled = true;
-        var newPos = Camera.main.ViewportToWorldPoint(new Vector3(1, givenHeight));
-
-        givenVelocity.Normalize();
-
-        newPos.z = 0;
-        this.transform.position = newPos;
-        var rb = this.GetComponent<Rigidbody2D>();
-        this.transform.right = -givenVelocity;
-        rb.velocity = givenVelocity * speed;
-
     }
 }
