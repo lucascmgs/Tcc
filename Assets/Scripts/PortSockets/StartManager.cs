@@ -26,6 +26,16 @@ public class StartManager : MonoBehaviour
 
     public void Awake()
     {
+        var clientManager = FindObjectOfType<ClientManager>();
+        if (clientManager != null)
+        {
+            Destroy(clientManager.transform.parent);
+        }var serverManager = FindObjectOfType<ServerManager>();
+        if (serverManager != null)
+        {
+            Destroy(serverManager.transform.parent);
+        }
+        
         System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR", false);
         System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("pt-BR", false);
     }
@@ -54,7 +64,7 @@ public class StartManager : MonoBehaviour
         }
     }
 
-    public void DestroyClient()
+    private void DestroyClient()
     {
         if (InstantiatedClient != null)
         {
@@ -70,28 +80,20 @@ public class StartManager : MonoBehaviour
         }
     }
 
-    public void DestroyServer()
+    private void DestroyServer()
     {
         if (InstantiatedServer != null)
         {
             Destroy(InstantiatedServer);
         }
     }
+
+    public void EndCommunications()
+    {
+        DestroyClient();
+        DeployServer();
+    }
     
-    public void DeactivateHostAndConnectButtons()
-    {
-        hostButton.interactable = false;
-        connectButton.interactable = false;
-        stopButton.gameObject.SetActive(true);
-    }
-
-    public void ResetButtons()
-    {
-        hostButton.interactable = true;
-        connectButton.interactable = true;
-        stopButton.gameObject.SetActive(false);
-    }
-
     public void SetMusic()
     {
         GameOptions.playMusic = !GameOptions.playMusic;
