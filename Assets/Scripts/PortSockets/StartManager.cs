@@ -91,4 +91,19 @@ public class StartManager : MonoBehaviour
         connectButton.interactable = true;
         stopButton.gameObject.SetActive(false);
     }
+
+    public void SetMusic()
+    {
+        GameOptions.playMusic = !GameOptions.playMusic;
+    }
+
+    public void SetSound()
+    {
+        GameOptions.playSounds = !GameOptions.playSounds;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit(0);
+    }
 }

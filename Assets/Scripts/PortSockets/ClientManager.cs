@@ -60,7 +60,7 @@ public class ClientManager : ManagerBase
 
     public void Send(string message)
     {
-        _client.Send(Encoding.UTF8.GetBytes(message));
+        _client.Send(Encoding.Unicode.GetBytes(message));
     }
 
     protected override void ManageConnectionStart(int connectionId)
@@ -68,6 +68,15 @@ public class ClientManager : ManagerBase
         SceneManager.LoadScene("SecondScreenScene");
     }
 
+    protected override void DecodeMessage(byte[] data)
+    {
+        string decodedMessage = Encoding.Unicode.GetString(data);
+        if (decodedMessage.Contains("EndGame"))
+        {
+            
+        }
+
+    }
 
     private void OnDestroy()
     {

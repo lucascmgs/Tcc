@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 49de78260e635e9499bf08e72859d9d5
+guid: e29e9a20fcc80b54fba546837d0c6068
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9198524191445737269
-    second: JoinRoom 0
-  - first:
-      213: 4815374147753866143
-    second: JoinRoom 1
+      213: 3737654617680490352
+    second: InputField 0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -63,11 +60,11 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 78
+    maxTextureSize: 30
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -81,43 +78,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: JoinRoom 0
+      name: InputField 0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 39
-        height: 28
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5652174}
+        width: 30
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53fd5f82409b7af70800000000000000
-      internalID: 9198524191445737269
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JoinRoom 1
-      rect:
-        serializedVersion: 2
-        x: 39
-        y: 0
-        width: 39
-        height: 28
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5652174}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f93f7714645a3d240800000000000000
-      internalID: 4815374147753866143
+      spriteID: 07fa1f36211ded330800000000000000
+      internalID: 3737654617680490352
       vertices: []
       indices: 
       edges: []
@@ -125,7 +101,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 

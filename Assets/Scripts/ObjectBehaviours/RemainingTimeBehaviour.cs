@@ -1,27 +1,45 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 
 public class RemainingTimeBehaviour : MonoBehaviour
 {
-    public float initialRemainingTime = 120;
     private TextMeshProUGUI timeText;
     
     [NonSerialized] public float remainingTime;
     void Start()
     {
-        remainingTime = initialRemainingTime;
+        remainingTime = GameOptions.gameTime;
         timeText = GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
     {
-        if ((int) remainingTime > 0)
+        remainingTime -= Time.deltaTime;
+
+        if (remainingTime >= 0)
         {
-            remainingTime -= Time.deltaTime;
+            timeText.text = "" + ((int) Math.Truncate(remainingTime) + 1);    
         }
-        timeText.text = "" + (int) remainingTime;
+        else
+        {
+            timeText.text = "0";
+        }
+        
+        
+    }
+
+    void EndGame(string result)
+    {
+        ServerManager serverManager = FindObjectOfType<ServerManager>();
+        if (serverManager != null)
+        {
+            string message = "EndGame;" + result + ";" + remainingTime;
+            serverManager.Send(message);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class UITImeFrame : MonoBehaviour
     {
         _timeBehaviour = FindObjectOfType<RemainingTimeBehaviour>();
         _image = GetComponent<Image>();
-        initialTime = _timeBehaviour.initialRemainingTime;
+        initialTime = GameOptions.gameTime;
     }
 
 
@@ -27,19 +28,19 @@ public class UITImeFrame : MonoBehaviour
 
         int imageIndex = 0;
 
-        if (remainingTimeRatio > 0.75)
+        if (remainingTimeRatio >= 0.75)
         {
             imageIndex = 0;
         }
-        else if (remainingTimeRatio > 0.5 && remainingTimeRatio <= 0.75)
+        else if (remainingTimeRatio >= 0.5 && remainingTimeRatio < 0.75)
         {
             imageIndex = 1;
         }
-        else if (remainingTimeRatio > 0.25 && remainingTimeRatio <= 0.5)
+        else if (remainingTimeRatio >= 0.25 && remainingTimeRatio < 0.5)
         {
             imageIndex = 2;
         }
-        else if (remainingTimeRatio > 0 && remainingTimeRatio <= 0.25)
+        else if (remainingTimeRatio > 0 && remainingTimeRatio < 0.25)
         {
             imageIndex = 3;
         }

@@ -62,7 +62,7 @@ namespace DefaultNamespace
 
         protected override void DecodeMessage(byte[] data)
         {
-            string decodedMessage = Encoding.UTF8.GetString(data);
+            string decodedMessage = Encoding.Unicode.GetString(data);
 
             if (decodedMessage.Contains("Spawn"))
             {

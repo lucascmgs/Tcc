@@ -34,7 +34,7 @@ public class LineBombBehaviour : MonoBehaviour
     private void OnBecameVisible()
     {
         var client = FindObjectOfType<ClientManager>();
-        if (client ==  null && SceneManager.GetActiveScene().name == "MainGameScene") 
+        if (client == null && SceneManager.GetActiveScene().name == "MainGameScene") 
         {
             StartCoroutine(BombBlink());
         }
