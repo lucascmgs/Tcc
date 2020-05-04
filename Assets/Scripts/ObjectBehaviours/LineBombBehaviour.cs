@@ -54,7 +54,8 @@ public class LineBombBehaviour : MonoBehaviour
 
     private void DisableComponents()
     {
-        _spriteRenderer.enabled = false;
+        _spriteRenderer.sprite = null;
+        
         _collider2D.enabled = false;
         _rigidbody2D.simulated = false;
     }
@@ -107,17 +108,17 @@ public class LineBombBehaviour : MonoBehaviour
                 newPositivePosition.x = thisPos.x + _distanceBetweenExplosions * (explosionsCount + 1);
                 newNegativePosition.x = thisPos.x - _distanceBetweenExplosions * (explosionsCount + 1);
             }
-
+            
             if (_explosionsDirection == LineDirection.Vertical)
             {
                 newPositivePosition.y = thisPos.y + _distanceBetweenExplosions * (explosionsCount + 1);
                 newNegativePosition.y = thisPos.y - _distanceBetweenExplosions * (explosionsCount + 1);
             }
-
+            
             Instantiate(_explosionPrefab, newPositivePosition, Quaternion.identity);
             Instantiate(_explosionPrefab, newNegativePosition, Quaternion.identity);
             
-            explosionsCount++;
+             explosionsCount++;
             yield return new WaitForSeconds(_timeBetweenExplosions);
         }
         Destroy(this.gameObject);
