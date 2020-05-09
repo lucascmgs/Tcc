@@ -16,7 +16,7 @@ public class BackgroundBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkSubMovement();
+        //checkSubMovement();
     }
 
     void checkSubMovement()

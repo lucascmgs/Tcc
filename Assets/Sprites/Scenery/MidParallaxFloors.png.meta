@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 05f90e8d4b6f38344b979728834127be
+guid: c712d68305361ac408fcd4278e07a4c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 165268138161536423
-    second: ParralaxFloors 0
+      213: 8445769508944741005
+    second: MidParallaxFloors_0
   - first:
-      213: -5372034149507423204
-    second: ParralaxFloors 1
+      213: 6578826528056246638
+    second: MidParallaxFloors_1
   - first:
-      213: 4734455139740509851
-    second: ParralaxFloors 2
+      213: 2074906866895780551
+    second: MidParallaxFloors_2
   - first:
-      213: -4310659791254821044
-    second: ParralaxFloors 3
+      213: -350759493282496333
+    second: MidParallaxFloors_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -69,7 +69,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -99,49 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ParralaxFloors 0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7adfecbfe762b4200800000000000000
-      internalID: 165268138161536423
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ParralaxFloors 1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c14a75d3763b275b0800000000000000
-      internalID: -5372034149507423204
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ParralaxFloors 2
+      name: MidParallaxFloors_0
       rect:
         serializedVersion: 2
         x: 0
@@ -153,16 +111,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b9661498dd924b140800000000000000
-      internalID: 4734455139740509851
+      spriteID: d820a7bee96653570800000000000000
+      internalID: 8445769508944741005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ParralaxFloors 3
+      name: MidParallaxFloors_1
       rect:
         serializedVersion: 2
         x: 32
@@ -174,10 +132,52 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c4762ba32c57d24c0800000000000000
-      internalID: -4310659791254821044
+      spriteID: e6185b30fdfac4b50800000000000000
+      internalID: 6578826528056246638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidParallaxFloors_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ca77575dcc8bcc10800000000000000
+      internalID: 2074906866895780551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MidParallaxFloors_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b00d49691ad12bf0800000000000000
+      internalID: -350759493282496333
       vertices: []
       indices: 
       edges: []
@@ -185,7 +185,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 7eb3a06297183c84f980ea10df2f8196
     internalID: 0
     vertices: []
     indices: 
