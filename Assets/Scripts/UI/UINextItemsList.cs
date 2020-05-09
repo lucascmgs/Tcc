@@ -9,12 +9,14 @@ public class UINextItemsList : MonoBehaviour
 {
     [SerializeField] private ItemListManager itemManager;
 
+    [SerializeField] private Image holdItemImage;
+    
     [SerializeField] private Slider cooldownSlider;
     
     private List<GameObject> itemList = new List<GameObject>();
     
     private Image[] itemImages;
-
+    
     void Start()
     {
         itemList = itemManager.itemList;
@@ -37,8 +39,15 @@ public class UINextItemsList : MonoBehaviour
     }
 
 
+   
+
     public void UpdateItemImages()
     {
+        if (itemManager.holdItem != null)
+        {
+            holdItemImage.sprite = itemManager.holdItem.GetComponent<SpriteRenderer>().sprite;
+        }
+        
         var imageArrayLength = itemImages.Length;
         if (itemList.Count > 0)
         {
@@ -50,7 +59,6 @@ public class UINextItemsList : MonoBehaviour
                 arr.sprite = spr;
                 index++;
             }
-            Debug.Log(index);
         }
     }
 
