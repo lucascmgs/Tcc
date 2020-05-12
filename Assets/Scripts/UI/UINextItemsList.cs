@@ -28,7 +28,7 @@ public class UINextItemsList : MonoBehaviour
         if (currentCooldown > 0)
         {
             cooldownSlider.gameObject.SetActive(true);
-            cooldownSlider.value = currentCooldown / itemManager.DefaultCooldown;
+            cooldownSlider.value = currentCooldown / itemManager.NextCoolDown;
         }
         else
         {
