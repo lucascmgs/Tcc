@@ -47,6 +47,11 @@ public class UINextItemsList : MonoBehaviour
         {
             holdItemImage.sprite = itemManager.holdItem.GetComponent<SpriteRenderer>().sprite;
         }
+
+        if (itemImages == null)
+        {
+            return;
+        }
         
         var imageArrayLength = itemImages.Length;
         if (itemList.Count > 0)
