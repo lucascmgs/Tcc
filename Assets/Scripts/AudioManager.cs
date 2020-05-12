@@ -54,7 +54,7 @@ namespace DefaultNamespace
                 var sound = soundBase[soundName];
                 if (sound == null)
                 {
-                    Debug.Log("There is no sound with the name " + soundName);
+                    //Debug.Log("There is no sound with the name " + soundName);
                     return;
                 }
 

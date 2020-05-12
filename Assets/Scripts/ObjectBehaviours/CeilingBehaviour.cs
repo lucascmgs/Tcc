@@ -25,6 +25,7 @@ public class CeilingBehaviour : MonoBehaviour
     [SerializeField] GameObject ceilingStalactitePrefab;
 
     GameObject backgroundComponent;
+    GameObject midBackgroundComponent;
 
     [SerializeField] private Queue<GameObject> ceilingList;
     [SerializeField] private Queue<GameObject> backgroundList;
@@ -42,6 +43,7 @@ public class CeilingBehaviour : MonoBehaviour
     void Start()
     {
         backgroundComponent = FindObjectOfType<BackgroundBehaviour>().gameObject;
+        midBackgroundComponent = FindObjectOfType<MidBackgroundBehaviour>().gameObject;
 
         ceilingList = new Queue<GameObject>();
         backgroundList = new Queue<GameObject>();
@@ -51,7 +53,7 @@ public class CeilingBehaviour : MonoBehaviour
 
         for (int i = 0; i < 20; i++)
         {
-            newCeiling = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x - 19 + i, 2.8f), Quaternion.identity);
+            newCeiling = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x - 19 + i, 2.8f), Quaternion.identity, this.transform);
             newCeiling.gameObject.GetComponent<SpriteRenderer>().sprite = ceilingSprites[rand.Next(0, 4)];
             newCeiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
             ceilingList.Enqueue(newCeiling);
@@ -60,19 +62,19 @@ public class CeilingBehaviour : MonoBehaviour
             ceiling.gameObject.GetComponent<SpriteRenderer>().sprite = stalactiteSprites[rand.Next(0, 4)];
             ceiling.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
 
-            newFloor = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x - 19 + i, -3), Quaternion.identity);
+            newFloor = Instantiate(ceilingPrefab, new Vector2(this.transform.position.x - 19 + i, -3), Quaternion.identity, this.transform);
             newFloor.gameObject.GetComponent<SpriteRenderer>().sprite = floorSprites[rand.Next(0, 4)];
             newFloor.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
             ceilingList.Enqueue(newFloor);
 
             backgroundComponent.transform.position = new Vector3(this.transform.position.x, -3, 10);
 
-            newBg = Instantiate(backgroundPrefab, new Vector3(this.transform.position.x - 19 + i, -2.0f, 10), Quaternion.identity, backgroundComponent.transform);
+            newBg = Instantiate(backgroundPrefab, new Vector3(this.transform.position.x - 19 + i, -1.9f, 10), Quaternion.identity, backgroundComponent.transform);
             newBg.gameObject.GetComponent<SpriteRenderer>().sprite = backgroundSprites[rand.Next(0, 4)];
             newBg.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel/3, 0);
             backgroundList.Enqueue(newBg);
 
-            newMidBg = Instantiate(midBackgroundPrefab, new Vector3(this.transform.position.x - 19 + i, -2.3f, 5), Quaternion.identity, backgroundComponent.transform);
+            newMidBg = Instantiate(midBackgroundPrefab, new Vector3(this.transform.position.x - 19 + i, -2.2f, 5), Quaternion.identity, midBackgroundComponent.transform);
             newMidBg.gameObject.GetComponent<SpriteRenderer>().sprite = midBackgroundSprites[rand.Next(0, 4)];
             newMidBg.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel/2, 0);
             midBackgroundList.Enqueue(newMidBg);
@@ -84,7 +86,6 @@ public class CeilingBehaviour : MonoBehaviour
     void Update()
     {
         generateMap();
-        Debug.Log((Camera.main.GetComponent<PixelPerfectCamera>().refResolutionX / (32f * 32f)) * 0.5f);
     }
 
     void generateMap()
@@ -104,7 +105,7 @@ public class CeilingBehaviour : MonoBehaviour
             newFloor.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel, 0);
             ceilingList.Enqueue(newFloor);
 
-            //tryToCreateStalactite();
+            tryToCreateStalactite();
             tryToCreateCeiling();
 
             if(ceilingList.Count >= 40) { 
@@ -117,7 +118,7 @@ public class CeilingBehaviour : MonoBehaviour
         {
             var rand = new System.Random();
 
-            newBg = Instantiate(backgroundPrefab, new Vector3(newBg.transform.position.x + 1, -2.0f, 10), Quaternion.identity, backgroundComponent.transform);
+            newBg = Instantiate(backgroundPrefab, new Vector3(newBg.transform.position.x + 1, newBg.transform.position.y, 10), Quaternion.identity, backgroundComponent.transform);
             newBg.gameObject.GetComponent<SpriteRenderer>().sprite = backgroundSprites[rand.Next(0, 4)];
             newBg.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel / 3, 0);
             backgroundList.Enqueue(newBg);
@@ -132,7 +133,7 @@ public class CeilingBehaviour : MonoBehaviour
         {
             var rand = new System.Random();
 
-            newMidBg = Instantiate(midBackgroundPrefab, new Vector3(newMidBg.transform.position.x + 1, -2.3f, 5), Quaternion.identity, backgroundComponent.transform);
+            newMidBg = Instantiate(midBackgroundPrefab, new Vector3(newMidBg.transform.position.x + 1, newMidBg.transform.position.y, 5), Quaternion.identity, midBackgroundComponent.transform);
             newMidBg.gameObject.GetComponent<SpriteRenderer>().sprite = midBackgroundSprites[rand.Next(0, 4)];
             newMidBg.GetComponent<Rigidbody2D>().velocity = new Vector2(-vel / 2, 0);
             midBackgroundList.Enqueue(newMidBg);

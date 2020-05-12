@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundBehaviour : MonoBehaviour
+public class MidBackgroundBehaviour : MonoBehaviour
 {
     GameObject submarine;
     float lastPosition;
@@ -23,11 +23,9 @@ public class BackgroundBehaviour : MonoBehaviour
         float difPos = submarine.transform.position.y - lastPosition;
         lastPosition = submarine.transform.position.y;
 
-        if(difPos != 0)
+        if (difPos != 0)
         {
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - (difPos * Time.deltaTime), 10);
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - (difPos * Time.deltaTime * 2), 10);
         }
     }
-
-
 }

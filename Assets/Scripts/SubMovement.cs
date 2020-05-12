@@ -18,6 +18,7 @@ public class SubMovement : MonoBehaviour
     [SerializeField]
     GameObject ceilingPrefab;
 
+
     int resolutionWidth;
     int resolutionHeight;
 
@@ -52,9 +53,9 @@ public class SubMovement : MonoBehaviour
             this.transform.position = new Vector2(this.transform.position.x, Camera.main.orthographicSize - ceilingPrefab.GetComponent<SpriteRenderer>().size.y / 2);
         }
 
-        else if(this.transform.position.y - floorPrefab.GetComponent<SpriteRenderer>().size.y <= -Camera.main.orthographicSize)
+        else if(this.transform.position.y - floorPrefab.GetComponent<SpriteRenderer>().size.y / 2 <= -Camera.main.orthographicSize)
         {
-            this.transform.position = new Vector2(this.transform.position.x, -Camera.main.orthographicSize + floorPrefab.GetComponent<SpriteRenderer>().size.y);
+            this.transform.position = new Vector2(this.transform.position.x, -Camera.main.orthographicSize + floorPrefab.GetComponent<SpriteRenderer>().size.y / 2);
         }
 
         if (this.transform.position.x + this.GetComponent<SpriteRenderer>().size.x >= ( (Camera.main.orthographicSize * resolutionWidth) / resolutionHeight ))

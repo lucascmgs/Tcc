@@ -46,6 +46,8 @@ public class StalactiteBehaviour : MonoBehaviour
             }
         }
 
+        checkXPosition();
+
     }
 
     void checkIfFalling()
@@ -88,5 +90,10 @@ public class StalactiteBehaviour : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void checkXPosition()
+    {
+        if (this.transform.position.x <= -6) Destroy(this.gameObject);
     }
 }
