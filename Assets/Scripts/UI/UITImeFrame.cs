@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class UITImeFrame : MonoBehaviour
     [SerializeField] private List<Sprite> sprites;
 
     private RemainingTimeBehaviour _timeBehaviour;
+
+    [NonSerialized] public float remainingTimeRatio;
 
     private float initialTime;
 
@@ -24,7 +27,7 @@ public class UITImeFrame : MonoBehaviour
 
     void Update()
     {
-        float remainingTimeRatio = _timeBehaviour.remainingTime / initialTime;
+        remainingTimeRatio = _timeBehaviour.remainingTime / initialTime;
 
         int imageIndex = 0;
 

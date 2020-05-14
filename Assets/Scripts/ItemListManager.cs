@@ -13,7 +13,7 @@ public class ItemListManager : MonoBehaviour
 {
     #region Public variables
 
-    public float DefaultCooldown = 1.0f;
+    public float NextCoolDown = 1.0f;
 
     [NonSerialized] public float currentCooldown = 0;
     
@@ -206,7 +206,7 @@ public class ItemListManager : MonoBehaviour
                 arrowRenderer.enabled = false;
                 canChangeHoldItem = true;
                 currentItem = null;
-                currentCooldown = DefaultCooldown;
+                currentCooldown = NextCoolDown;
                 holdButton.interactable = true;
             }
         }
