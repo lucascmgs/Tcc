@@ -58,6 +58,7 @@ public class ClientManager : ManagerBase
         _client.Connect(givenAddress, Port);
     }
 
+    
     public void Send(string message)
     {
         _client.Send(Encoding.Unicode.GetBytes(message));
@@ -73,7 +74,27 @@ public class ClientManager : ManagerBase
         string decodedMessage = Encoding.Unicode.GetString(data);
         if (decodedMessage.Contains("EndGame"))
         {
-            
+            if (decodedMessage.Contains("phoneOwn"))
+            {
+                GameOptions.gameState = Gamestate.PhoneOwn;
+            } else if (decodedMessage.Contains("subOwn"))
+            {
+                GameOptions.gameState = Gamestate.SubOwn;
+            }
+
+            SceneManager.LoadScene("GameOverPhoneScene");
+        }
+
+        if (decodedMessage.Contains("PlayAgain"))
+        {
+            GameOptions.gameState = Gamestate.NotStarted;
+            SceneManager.LoadScene("SecondScreenScene");
+        }
+
+        if (decodedMessage.Contains("Quit"))
+        {
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("StartScene");
         }
 
     }

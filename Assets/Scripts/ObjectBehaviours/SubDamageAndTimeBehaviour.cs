@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SubDamageBehaviour : MonoBehaviour
+public class SubDamageAndTimeBehaviour : MonoBehaviour
 {
     public int Health = 6;
 
@@ -15,6 +16,8 @@ public class SubDamageBehaviour : MonoBehaviour
 
     [SerializeField] private float knockBackIntensity = 2f;
 
+    private UITImeFrame timeFrame;
+
     private bool isInvincible = false;
 
     private SpriteRenderer[] renderers;
@@ -22,8 +25,9 @@ public class SubDamageBehaviour : MonoBehaviour
 
     private void Start()
     {
-        _audioManager = FindObjectOfType<AudioManager>(); 
+        _audioManager = FindObjectOfType<AudioManager>();
         renderers = GetComponentsInChildren<SpriteRenderer>();
+        timeFrame = FindObjectOfType<UITImeFrame>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -31,8 +35,41 @@ public class SubDamageBehaviour : MonoBehaviour
         if (other.tag == "Obstacle")
         {
             var receivedDamage = other.gameObject.GetComponent<ObstacleDamageManager>().Damage;
-            TakeDamage( other.transform.position, receivedDamage);
+            TakeDamage(other.transform.position, receivedDamage);
         }
+    }
+
+    private void Update()
+    {
+        if (timeFrame.remainingTimeRatio <= 0)
+        {
+            StartCoroutine(FinishGame(Gamestate.SubOwn));
+        }
+    }
+
+    private IEnumerator FinishGame(Gamestate endstate)
+    {
+        var server = FindObjectOfType<ServerManager>();
+        string endString = "EndGame;";
+
+        if (endstate == Gamestate.PhoneOwn)
+        {
+            GameOptions.gameState = Gamestate.PhoneOwn;
+            endString += "phoneOwn";
+        }
+        else if (endstate == Gamestate.SubOwn)
+        {
+            GameOptions.gameState = Gamestate.SubOwn;
+            endString += "subOwn";
+        }
+
+        if (server != null)
+        {
+            server.Send(endString);
+        }
+
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene("GameOverScene");
     }
 
     void TakeDamage(Vector2 sourcePosition, int receivedDamage = 1)
@@ -45,10 +82,15 @@ public class SubDamageBehaviour : MonoBehaviour
             StartCoroutine(InvencibilityBlink());
             KnockBack(sourcePosition);
         }
-        
+
         if (Health < 0)
         {
             Health = 0;
+        }
+
+        if (Health == 0)
+        {
+            FinishGame(Gamestate.PhoneOwn);
         }
     }
 
@@ -67,8 +109,8 @@ public class SubDamageBehaviour : MonoBehaviour
         var currentTime = Time.timeSinceLevelLoad;
         float durationToReduce = 0f;
         bool isEnabled = false;
-        
-        
+
+
         while (blinkDuration > 0f)
         {
             durationToReduce = Time.timeSinceLevelLoad - currentTime;
