@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
@@ -84,7 +85,14 @@ public class StalactiteBehaviour : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        var pos = Camera.main.WorldToViewportPoint(this.transform.position);
+        var pos = new Vector3();
+        try
+        {
+            pos = Camera.main.WorldToViewportPoint(this.transform.position);
+
+        }
+        catch (Exception e){}
+        
 
         if(pos.x <= 0)
         {
