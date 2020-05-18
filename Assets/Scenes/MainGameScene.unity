@@ -649,6 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 643671340}
   - component: {fileID: 643671339}
+  - component: {fileID: 643671341}
   m_Layer: 0
   m_Name: MidBackgroundController
   m_TagString: Untagged
@@ -682,6 +683,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &643671341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643671338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d077cd41b71bc4b939da4bb2005e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &656031940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,26 +1532,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1635449210}
-  - component: {fileID: 1635449209}
   m_Layer: 0
   m_Name: BackgroundController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1635449209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635449208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d077cd41b71bc4b939da4bb2005e1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_IsActive: 0
 --- !u!4 &1635449210
 Transform:
   m_ObjectHideFlags: 0
