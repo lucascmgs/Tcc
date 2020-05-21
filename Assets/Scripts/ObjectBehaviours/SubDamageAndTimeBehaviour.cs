@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class SubDamageAndTimeBehaviour : MonoBehaviour
 {
+    public int MaxHealth = 6;
+    
     public int Health = 6;
 
     [SerializeField] private float InvencibilityTime = 2f;
@@ -36,6 +38,12 @@ public class SubDamageAndTimeBehaviour : MonoBehaviour
         {
             var receivedDamage = other.gameObject.GetComponent<ObstacleDamageManager>().Damage;
             TakeDamage(other.transform.position, receivedDamage);
+        }
+
+        if (other.tag == "HealthItem")
+        {
+            GetHealth(1);
+            Destroy(other.gameObject);
         }
     }
 
@@ -74,7 +82,8 @@ public class SubDamageAndTimeBehaviour : MonoBehaviour
 
     void TakeDamage(Vector2 sourcePosition, int receivedDamage = 1)
     {
-        _audioManager.Play("Damage");
+        _audioManager?.Play("Damage");
+        
         if (!isInvincible)
         {
             Health -= receivedDamage;
@@ -91,6 +100,14 @@ public class SubDamageAndTimeBehaviour : MonoBehaviour
         if (Health == 0)
         {
             FinishGame(Gamestate.PhoneOwn);
+        }
+    }
+
+    void GetHealth(int amount)
+    {
+        if (Health + amount <= MaxHealth)
+        {
+            Health += amount;
         }
     }
 
