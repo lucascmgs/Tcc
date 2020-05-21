@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
@@ -46,6 +47,8 @@ public class StalactiteBehaviour : MonoBehaviour
             }
         }
 
+        checkXPosition();
+
     }
 
     void checkIfFalling()
@@ -82,11 +85,23 @@ public class StalactiteBehaviour : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        var pos = Camera.main.WorldToViewportPoint(this.transform.position);
+        var pos = new Vector3();
+        try
+        {
+            pos = Camera.main.WorldToViewportPoint(this.transform.position);
+
+        }
+        catch (Exception e){}
+        
 
         if(pos.x <= 0)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void checkXPosition()
+    {
+        if (this.transform.position.x <= -6) Destroy(this.gameObject);
     }
 }

@@ -56,7 +56,7 @@ public class GunBehaviour : MonoBehaviour
 
     public void Fire(InputAction.CallbackContext context)
     {
-        Debug.Log(bulletCount);
+        //Debug.Log(bulletCount);
         if (context.performed)
         {
             if (bulletCount < maxBullets)
@@ -86,7 +86,7 @@ public class GunBehaviour : MonoBehaviour
         int vezes = 0;
         while (true)
         {
-            Debug.Log("Foi " + vezes);
+            //Debug.Log("Foi " + vezes);
             vezes++;
             yield return new WaitForSeconds(1.0f);
         }

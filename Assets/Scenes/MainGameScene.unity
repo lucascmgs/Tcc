@@ -355,7 +355,7 @@ PrefabInstance:
     - target: {fileID: 4325105397526826020, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4325105397526826020, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
@@ -404,9 +404,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
+      propertyPath: midBackgroundSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
       propertyPath: ceilingStalactitePrefab
       value: 
       objectReference: {fileID: 487771644560668317, guid: 2cc103dab51d91a478a6ade13ff50254,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: midBackgroundSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 8445769508944741005, guid: c712d68305361ac408fcd4278e07a4c4,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: midBackgroundSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 6578826528056246638, guid: c712d68305361ac408fcd4278e07a4c4,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: midBackgroundSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 2074906866895780551, guid: c712d68305361ac408fcd4278e07a4c4,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: midBackgroundSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: -350759493282496333, guid: c712d68305361ac408fcd4278e07a4c4,
+        type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: midBackgroundPrefab
+      value: 
+      objectReference: {fileID: 7481567644969296017, guid: c58b4b11cff26f74aa46c6985108c5d5,
         type: 3}
     - target: {fileID: 4325105397526826203, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
@@ -543,7 +578,7 @@ MonoBehaviour:
   m_RefResolutionX: 320
   m_RefResolutionY: 180
   m_UpscaleRT: 0
-  m_PixelSnapping: 0
+  m_PixelSnapping: 1
   m_CropFrameX: 1
   m_CropFrameY: 1
   m_StretchFill: 0
@@ -604,6 +639,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &643671338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 643671340}
+  - component: {fileID: 643671339}
+  - component: {fileID: 643671341}
+  m_Layer: 0
+  m_Name: MidBackgroundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &643671339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643671338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398fcfc2fea4b24468e38cd0846b59a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &643671340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643671338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &643671341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643671338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d077cd41b71bc4b939da4bb2005e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &656031940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,7 +1148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094843576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -0.6580666, z: -1}
+  m_LocalPosition: {x: -1.77, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 725582645}
@@ -1441,26 +1532,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1635449210}
-  - component: {fileID: 1635449209}
   m_Layer: 0
   m_Name: BackgroundController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1635449209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635449208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d077cd41b71bc4b939da4bb2005e1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_IsActive: 0
 --- !u!4 &1635449210
 Transform:
   m_ObjectHideFlags: 0
@@ -1469,7 +1547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635449208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.678571, y: -0.9047867, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
