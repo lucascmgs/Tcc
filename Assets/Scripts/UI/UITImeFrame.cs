@@ -21,7 +21,7 @@ public class UITImeFrame : MonoBehaviour
     {
         _timeBehaviour = FindObjectOfType<RemainingTimeBehaviour>();
         _image = GetComponent<Image>();
-        initialTime = GameOptions.gameTime;
+        initialTime = GameOptions.GameTime;
     }
 
 

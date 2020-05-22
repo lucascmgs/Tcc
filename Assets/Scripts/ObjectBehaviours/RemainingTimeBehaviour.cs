@@ -12,7 +12,7 @@ public class RemainingTimeBehaviour : MonoBehaviour
     [NonSerialized] public float remainingTime;
     void Start()
     {
-        remainingTime = GameOptions.gameTime;
+        remainingTime = GameOptions.GameTime;
         timeText = GetComponent<TextMeshProUGUI>();
     }
 
