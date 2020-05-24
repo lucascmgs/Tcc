@@ -14,11 +14,9 @@ public class StartManager : MonoBehaviour
     public GameObject clientPrefab;
     public GameObject serverPrefab;
     public TextMeshProUGUI localIp;
-    
-    [NonSerialized]
-    public GameObject InstantiatedServer;
-    [NonSerialized]
-    public GameObject InstantiatedClient;
+
+    [NonSerialized] public GameObject InstantiatedServer;
+    [NonSerialized] public GameObject InstantiatedClient;
 
     public Button hostButton;
     public Button connectButton;
@@ -30,12 +28,14 @@ public class StartManager : MonoBehaviour
         if (clientManager != null)
         {
             Destroy(clientManager.transform.parent);
-        }var serverManager = FindObjectOfType<ServerManager>();
+        }
+
+        var serverManager = FindObjectOfType<ServerManager>();
         if (serverManager != null)
         {
             Destroy(serverManager.transform.parent);
         }
-        
+
         System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR", false);
         System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("pt-BR", false);
     }
@@ -44,8 +44,12 @@ public class StartManager : MonoBehaviour
     {
         string hname = Dns.GetHostName();
         var ips = Dns.GetHostEntry(hname).AddressList;
-        
-        localIp.text = "Local IP:";
+
+        if (localIp != null)
+        {
+            localIp.text = "Local IP:";
+        }
+
         foreach (var ip in ips)
         {
             if (ip.AddressFamily == AddressFamily.InterNetwork)
@@ -53,9 +57,8 @@ public class StartManager : MonoBehaviour
                 localIp.text += "\n" + ip.ToString();
             }
         }
-       
     }
-    
+
     public void DeployClient()
     {
         if (clientPrefab != null && InstantiatedServer == null && InstantiatedClient == null)
@@ -74,7 +77,7 @@ public class StartManager : MonoBehaviour
 
     public void DeployServer()
     {
-        if (serverPrefab != null && InstantiatedClient == null && InstantiatedServer == null) 
+        if (serverPrefab != null && InstantiatedClient == null && InstantiatedServer == null)
         {
             InstantiatedServer = Instantiate(serverPrefab);
         }
@@ -93,7 +96,7 @@ public class StartManager : MonoBehaviour
         DestroyClient();
         DeployServer();
     }
-    
+
     public void SetMusic()
     {
         GameOptions.playMusic = !GameOptions.playMusic;

@@ -51,11 +51,11 @@ public class SubDamageAndTimeBehaviour : MonoBehaviour
     {
         if (timeFrame.remainingTimeRatio <= 0)
         {
-            StartCoroutine(FinishGame(Gamestate.SubOwn));
+            FinishGame(Gamestate.SubOwn);
         }
     }
 
-    private IEnumerator FinishGame(Gamestate endstate)
+    private void FinishGame(Gamestate endstate)
     {
         var server = FindObjectOfType<ServerManager>();
         string endString = "EndGame;";
@@ -76,7 +76,6 @@ public class SubDamageAndTimeBehaviour : MonoBehaviour
             server.Send(endString);
         }
 
-        yield return new WaitForSeconds(0.1f);
         SceneManager.LoadScene("GameOverScene");
     }
 

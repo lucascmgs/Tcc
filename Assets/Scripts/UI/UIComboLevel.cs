@@ -15,6 +15,13 @@ namespace DefaultNamespace
 
         private void Start()
         {
+            var clientManager = FindObjectOfType<ClientManager>();
+
+            if (clientManager != null)
+            {
+                clientManager.levelEvent.AddListener(ChangeComboLevel);
+            }
+            
             thisImage = GetComponent<Image>();
             if (animator == null)
             {

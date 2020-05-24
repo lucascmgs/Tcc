@@ -64,11 +64,20 @@ public class ObstacleBehaviour : MonoBehaviour
     {
         if (destructible)
         {
-            if (other.tag == "Bullet")
+            if (other.CompareTag("Bullet"))
             {
                 Destroy(this.gameObject);
             }
+        }
+        
+        if (other.CompareTag("Player") || other.CompareTag("HealthItem"))
+        {
+            FindObjectOfType<PhoneComboManager>().IncrementRank();
 
+            if (other.CompareTag("HealthItem"))
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }

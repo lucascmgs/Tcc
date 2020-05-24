@@ -5,6 +5,7 @@ using DefaultNamespace;
 using UnityEngine;
 using Telepathy;
 using TMPro;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using EventType = Telepathy.EventType;
@@ -17,18 +18,28 @@ public class ClientManager : ManagerBase
 
     private bool hasConnected = false;
 
+    public LevelEvent levelEvent;
+
+    public class LevelEvent : UnityEvent<int>
+    {
+    }
+
+
     private void Awake()
     {
-        
+        levelEvent = new LevelEvent();
+
         TMP_InputField ipInputField = FindObjectOfType<TMP_InputField>();
         if (ipInputField != null && ipInputField.text != "")
         {
             Connect(ipInputField.text);
         }
+
         _device = _client;
         Setup();
     }
 
+ 
 
     void Update()
     {
@@ -53,12 +64,12 @@ public class ClientManager : ManagerBase
         {
             givenAddress = "192.168.1." + givenAddress;
         }
-        
+
         Debug.Log("Connecting");
         _client.Connect(givenAddress, Port);
     }
 
-    
+
     public void Send(string message)
     {
         _client.Send(Encoding.Unicode.GetBytes(message));
@@ -77,12 +88,20 @@ public class ClientManager : ManagerBase
             if (decodedMessage.Contains("phoneOwn"))
             {
                 GameOptions.gameState = Gamestate.PhoneOwn;
-            } else if (decodedMessage.Contains("subOwn"))
+            }
+            else if (decodedMessage.Contains("subOwn"))
             {
                 GameOptions.gameState = Gamestate.SubOwn;
             }
 
             SceneManager.LoadScene("GameOverPhoneScene");
+        }
+
+        if (decodedMessage.Contains("ComboLevel"))
+        {
+            string[] splitMsg = decodedMessage.Split(';');
+            int level = Int32.Parse(splitMsg[1]);
+            levelEvent.Invoke(level);
         }
 
         if (decodedMessage.Contains("PlayAgain"))
@@ -96,7 +115,6 @@ public class ClientManager : ManagerBase
             Destroy(this.gameObject);
             SceneManager.LoadScene("StartScene");
         }
-
     }
 
     private void OnDestroy()

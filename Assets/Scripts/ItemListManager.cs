@@ -19,6 +19,8 @@ public class ItemListManager : MonoBehaviour
     
     [NonSerialized] public GameObject holdItem;
 
+
+    public float[] cooldownsPerLevel = new[] {1.0f, 0.8f, 0.6f, 0.5f}; 
     
     public List<GameObject> itemList = new List<GameObject>();
 
@@ -46,7 +48,6 @@ public class ItemListManager : MonoBehaviour
 
     private GameObject currentItem;
 
-
     private Vector3 pointerPositionInWorld = Vector3.zero;
 
     private Pointer currentPointer;
@@ -61,6 +62,13 @@ public class ItemListManager : MonoBehaviour
 
     void Start()
     {
+        var clientManager = FindObjectOfType<ClientManager>();
+
+        if (clientManager != null)
+        {
+            clientManager.levelEvent.AddListener(ChangeComboLevel);
+        }
+        
         holdButton = FindObjectOfType<Button>();
         if (Touchscreen.current != null)
         {
@@ -242,6 +250,10 @@ public class ItemListManager : MonoBehaviour
         return item;
     }
 
+    private void ChangeComboLevel(int level)
+    {
+        NextCoolDown = cooldownsPerLevel[level];
+    }
     public void ChangeHoldItem()
     {
         if (canChangeHoldItem)
@@ -263,4 +275,6 @@ public class ItemListManager : MonoBehaviour
         }
         
     }
+    
+    
 }
