@@ -99,6 +99,7 @@ public class ClientManager : ManagerBase
 
         if (decodedMessage.Contains("ComboLevel"))
         {
+            Debug.Log("Chegou combo level");
             string[] splitMsg = decodedMessage.Split(';');
             int level = Int32.Parse(splitMsg[1]);
             levelEvent.Invoke(level);

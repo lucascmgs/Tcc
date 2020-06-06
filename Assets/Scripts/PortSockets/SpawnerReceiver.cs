@@ -18,7 +18,6 @@ public class SpawnerReceiver : MonoBehaviour
     {
         var newPos = Camera.main.ViewportToWorldPoint(new Vector3(1, givenHeight));
         newPos.z = 0;
-        Debug.Log(velx + " " + vely);
         var newVelocity = new Vector2(velx, vely);
         newVelocity.Normalize();
         var newItem = Instantiate(SpawnableObjects[objIndex], newPos, Quaternion.identity);

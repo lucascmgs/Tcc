@@ -72,8 +72,9 @@ public class ObstacleBehaviour : MonoBehaviour
         
         if (other.CompareTag("Player") || other.CompareTag("HealthItem"))
         {
+            //Debug.Log("Acertou");
             FindObjectOfType<PhoneComboManager>().IncrementRank();
-
+            
             if (other.CompareTag("HealthItem"))
             {
                 Destroy(other.gameObject);
