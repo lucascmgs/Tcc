@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.ObjectBehaviours;
 using UnityEngine;
 
-public class ObstacleBehaviour : MonoBehaviour
+public class ObstacleBehaviour : DamageableBehaviour
 {
 
     public float speed = 6;
-    [SerializeField] private bool destructible = false;
     [SerializeField] private int itemId;
     private float Height;
     private Vector2 Velocity;
@@ -60,25 +60,5 @@ public class ObstacleBehaviour : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (destructible)
-        {
-            if (other.CompareTag("Bullet"))
-            {
-                Destroy(this.gameObject);
-            }
-        }
-        
-        if (other.CompareTag("Player") || other.CompareTag("HealthItem"))
-        {
-            //Debug.Log("Acertou");
-            FindObjectOfType<PhoneComboManager>().IncrementRank();
-            
-            if (other.CompareTag("HealthItem"))
-            {
-                Destroy(other.gameObject);
-            }
-        }
-    }
+    
 }

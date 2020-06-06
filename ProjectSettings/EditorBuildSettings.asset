@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PhoneStartScene.unity
     guid: a5dd8c559f53dce47ad64b299c2e9002
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainGameScene.unity
     guid: 43c38499a643eef46933dc57a50bb6c5
   - enabled: 1
     path: Assets/Scenes/SecondScreenScene.unity
     guid: 4a5475abb930729e18ed6c35cd0a7b4f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOverScene.unity
     guid: 182dabfa40ce382489504e280579bdd0
   - enabled: 1

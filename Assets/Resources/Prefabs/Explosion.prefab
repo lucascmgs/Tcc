@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8456912230627026384}
   - component: {fileID: 8456912230627026383}
   - component: {fileID: 8456912230627026382}
-  - component: {fileID: 1802498455216287865}
   - component: {fileID: 7763912886857625313}
+  - component: {fileID: 1842926583030333992}
+  - component: {fileID: 5969457480564523680}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Obstacle
@@ -104,19 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1802498455216287865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8456912230627026381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bd2f653ad81483d783357299244cefd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 2
 --- !u!58 &7763912886857625313
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,3 +121,29 @@ CircleCollider2D:
   m_Offset: {x: 0.022425294, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
+--- !u!114 &1842926583030333992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456912230627026381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd2f653ad81483d783357299244cefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1
+--- !u!114 &5969457480564523680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456912230627026381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c760ab2a3e49bb8a945e58c815b797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructible: 0
