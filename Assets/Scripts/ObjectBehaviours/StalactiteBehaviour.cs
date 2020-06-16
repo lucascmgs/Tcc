@@ -75,10 +75,9 @@ public class StalactiteBehaviour : MonoBehaviour
 
     private void Break()
     {
-        Debug.Log("OK");
         _col.enabled = false;
         this._rb.velocity = new Vector2(this._rb.velocity.x, this._rb.velocity.y / 10);
-        _audioManager.Play("BrokenStalactite");
+        _audioManager.Play("BrokenObject");
         
         _anim.SetBool("Broken", true);
     }

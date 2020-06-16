@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 50065163670965238}
   - component: {fileID: -6843233406067977192}
   - component: {fileID: 114141403261223776}
+  - component: {fileID: 91638785}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Obstacle
@@ -74,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 95d6c98f8b1d57a86a0311cdb206f663, type: 3}
+  m_Sprite: {fileID: -3600162799094846877, guid: 95d6c98f8b1d57a86a0311cdb206f663,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,6 +149,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666e5b3b9290094bba7e407e5f0eda46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
   destructible: 1
+  speed: 6
   itemId: 0
+--- !u!95 &91638785
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410040700684619949}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0eec8a22faa76f4438a0d4607a464f1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

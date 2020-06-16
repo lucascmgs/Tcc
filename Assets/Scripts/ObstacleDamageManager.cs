@@ -6,6 +6,5 @@ using UnityEngine;
 public class ObstacleDamageManager : MonoBehaviour
 {
     public int Damage;
-    // Update is called once per frame
 
 } 
