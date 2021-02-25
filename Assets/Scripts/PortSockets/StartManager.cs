@@ -42,8 +42,14 @@ public class StartManager : MonoBehaviour
 
     public void Start()
     {
+        if (localIp == null)
+        {
+            return;
+        }
+        
         string hname = Dns.GetHostName();
         var ips = Dns.GetHostEntry(hname).AddressList;
+        
         
         localIp.text = "Local IP:";
         foreach (var ip in ips)
