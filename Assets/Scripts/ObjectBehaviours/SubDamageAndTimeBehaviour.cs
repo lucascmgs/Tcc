@@ -71,6 +71,7 @@ public class SubDamageAndTimeBehaviour : MonoBehaviour
             endString += "subOwn";
         }
 
+        Debug.Log(endString);
         if (server != null)
         {
             server.Send(endString);

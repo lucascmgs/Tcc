@@ -244,23 +244,25 @@ public class ItemListManager : MonoBehaviour
 
     public void ChangeHoldItem()
     {
-        if (canChangeHoldItem)
+        if (!canChangeHoldItem)
         {
-            canChangeHoldItem = false;
-
-            holdButton.interactable = false;
-
-            if (holdItem == null)
-            {
-                holdItem = UseItem();
-            }
-            else
-            {
-                var temp = holdItem;
-                holdItem = itemList[0];
-                itemList[0] = temp;
-            }
+            return;
         }
         
+        canChangeHoldItem = false;
+
+        holdButton.interactable = false;
+
+        if (holdItem == null)
+        {
+            holdItem = UseItem();
+        }
+        else
+        {
+            var temp = holdItem;
+            holdItem = itemList[0];
+            itemList[0] = temp;
+        }
+
     }
 }

@@ -373,7 +373,6 @@ MonoBehaviour:
     type: 3}
   minWaitTime: 5
   maxWaitTime: 10
-  hasSetSpawn: 0
 --- !u!4 &136226199
 Transform:
   m_ObjectHideFlags: 0
@@ -1386,7 +1385,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1094843576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 590e88d97a5bb32448c2591635fa24f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 056671d583734c5bc8232a4d8aa7b901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 6
