@@ -71,7 +71,6 @@ public class SubDamageAndTimeBehaviour : MonoBehaviour
             endString += "subOwn";
         }
 
-        Debug.Log(endString);
         if (server != null)
         {
             server.Send(endString);
@@ -100,7 +99,7 @@ public class SubDamageAndTimeBehaviour : MonoBehaviour
 
         if (Health == 0)
         {
-            FinishGame(Gamestate.PhoneOwn);
+            StartCoroutine(FinishGame(Gamestate.PhoneOwn));
         }
     }
 

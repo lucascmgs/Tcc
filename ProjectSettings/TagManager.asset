@@ -7,6 +7,8 @@ TagManager:
   - Floor
   - Obstacle
   - Bullet
+  - HealthItem
+  - Status
   layers:
   - Default
   - TransparentFX

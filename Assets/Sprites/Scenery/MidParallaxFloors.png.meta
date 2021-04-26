@@ -10,10 +10,13 @@ TextureImporter:
     second: MidParallaxFloors_1
   - first:
       213: 2074906866895780551
-    second: MidParallaxFloors_2
+    second: MidParallaxFloors_3
   - first:
       213: -350759493282496333
     second: MidParallaxFloors_3
+  - first:
+      213: 3017967685559985317
+    second: MidParallaxFloors_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,7 +106,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -124,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -141,10 +144,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MidParallaxFloors_2
+      name: MidParallaxFloors_3
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 0
         width: 32
         height: 32
@@ -162,13 +165,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MidParallaxFloors_3
+      name: MidParallaxFloors_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 0
+        y: 2
         width: 32
-        height: 32
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b00d49691ad12bf0800000000000000
-      internalID: -350759493282496333
+      spriteID: 5a42961ce99f1e920800000000000000
+      internalID: 3017967685559985317
       vertices: []
       indices: 
       edges: []

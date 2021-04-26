@@ -476,13 +476,13 @@ PrefabInstance:
         type: 3}
       propertyPath: midBackgroundSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 2074906866895780551, guid: c712d68305361ac408fcd4278e07a4c4,
+      objectReference: {fileID: 3017967685559985317, guid: c712d68305361ac408fcd4278e07a4c4,
         type: 3}
     - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
       propertyPath: midBackgroundSprites.Array.data[3]
       value: 
-      objectReference: {fileID: -350759493282496333, guid: c712d68305361ac408fcd4278e07a4c4,
+      objectReference: {fileID: 2074906866895780551, guid: c712d68305361ac408fcd4278e07a4c4,
         type: 3}
     - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
@@ -490,6 +490,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7481567644969296017, guid: c58b4b11cff26f74aa46c6985108c5d5,
         type: 3}
+    - target: {fileID: 4325105397526826021, guid: bd9b160c34374194eb51a329846274e2,
+        type: 3}
+      propertyPath: timeToIncreaseVelocity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4325105397526826203, guid: bd9b160c34374194eb51a329846274e2,
         type: 3}
       propertyPath: m_Name
@@ -527,8 +532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RepeatDelay: 0.5
-  m_RepeatRate: 0.1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
     type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018,
@@ -551,8 +556,8 @@ MonoBehaviour:
     type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018,
     type: 3}
-  m_TrackedDeviceSelectAction: {fileID: 2559092417903258184, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 2
 --- !u!114 &373893610
 MonoBehaviour:
   m_ObjectHideFlags: 0
